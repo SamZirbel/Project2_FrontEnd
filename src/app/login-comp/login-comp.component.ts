@@ -24,10 +24,7 @@ export class LoginCompComponent implements OnInit {
       
 //  });
 
- this.api.getall().subscribe(res=>{
-console.log(res);
-
- })
+ 
   }
   loggedId: any=0;
   //is remember me ...................................
