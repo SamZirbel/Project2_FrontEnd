@@ -10,11 +10,15 @@ import { ForgetPassComponent } from './forget-pass/forget-pass.component';
   declarations: [
     LoginAuthComponent,
     SignupComponent,
-    ForgetPassComponent,
-   
+    ForgetPassComponent 
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    LoginAuthComponent,
+    SignupComponent,
+    ForgetPassComponent
   ]
 
 })
