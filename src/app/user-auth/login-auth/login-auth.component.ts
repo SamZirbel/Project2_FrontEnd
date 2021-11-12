@@ -10,43 +10,27 @@ import {Router} from '@angular/router';
   styleUrls: ['./login-auth.component.css'],
 })
 export class LoginAuthComponent implements OnInit {
-  constructor(private services : UserServiceService, private router: Router) {}
-
-  user:string="";
-
+  constructor(private service : UserServiceService, private router: Router) {}
+  tokenized:any;
+  
   forgetpass(){
       this.router.navigateByUrl("forgetpass")
   }
   
-  
-
-   message: any;
   doLogin(fdata: LoginInfo) {
   
-    console.log(fdata.username);
-    //let resp=this.service.login(this.lg);
+   // console.log(fdata.username);
+    this.service.generateToken(fdata).subscribe(
+      data=>{
+        this.tokenized =sessionStorage.setItem("token", data);
+        console.log(data);
+      }
 
-    //resp.subscribe(
-    // //  data=>{
-    //     console.log(data);
-    //   }
-
-    //)
+    )
   }
-  // log:LoginInfo|null=null;
-  // userData:any;
-  // submit(data:any){
-  //   console.log(data.user);
-  //   console.log(data.pass);
-  //   this.log=new LoginInfo(data.user,data.pass);
-  //     this.api.login(this.log).subscribe(res => {
-  //       console.log(res);
-  //       console.log("inside")
-
-  //  });
-
-  // }
-  // loggedId: any=0;
+ 
+ 
+ 
   // //is remember me ...................................
   // lsRememberMe(rem:any, usr:any, pass:any) {
   //   //console.log(rem )
@@ -64,9 +48,11 @@ export class LoginAuthComponent implements OnInit {
   // }
 
   ngOnInit(): void {
-    // this.loggedId =sessionStorage.setItem("userId","0");
+    if(sessionStorage.getItem("token")!=null){
+      this.router.navigateByUrl('home');
+     }
   }
   ngAfterViewInit(): void {
-    // this.loggedId =sessionStorage.getItem("userId");
+     
   }
 }

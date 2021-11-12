@@ -5,10 +5,10 @@
         <mat-card-title>Log in</mat-card-title>
       </mat-card-header>
   
-      <form class="example-form" #form='ngForm' [ngSubmit]="doLogin(form.value)">
+      <form class="example-form" #form='ngForm' (submit)="doLogin(form.value)">
         <mat-card-content>
           <mat-form-field  class="example-full-width">
-            <input matInput type="text" placeholder="Username" name="username" [(ngModel)]="user">
+            <input matInput type="text" placeholder="Username" name="username" ngModel>
           </mat-form-field>
   
           <mat-form-field class="example-full-width">
