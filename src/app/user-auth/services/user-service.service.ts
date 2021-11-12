@@ -8,23 +8,25 @@ import { Observable } from 'rxjs';
 })
 export class UserServiceService {
 
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Credentials': 'true'
-
-    })
-  }
-   URL = "http://localhost:8081/";
+ 
+   URL = "http://localhost:8085/";
   constructor(private http:HttpClient) {   }
 
   login(data:LoginInfo):Observable<LoginInfo>
   {
-    return this.http.post<LoginInfo>(URL+"login"+"/", JSON.stringify(data), this.httpOptions)
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: 'Basic'+btoa(data.username+":"+data.password),
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Credentials': 'true',
+         responseType: 'text' as 'json'
+  
+      })
+    }
+
+    return this.http.get<LoginInfo>(URL+"login"+"/", httpOptions) as Observable<LoginInfo>
+    //return this.http.post<LoginInfo>(URL+"login"+"/", JSON.stringify(data), this.httpOptions)
     //return this.http.get("https://pokeapi.co/api/v2/pokemon/"+id+"/") as Observable<Pokemon>; 
   }
  
-  
-  
-
-}
+ }

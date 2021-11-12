@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-
-  constructor() { }
-
+userId:any='';
+  constructor(private route: ActivatedRoute) { }
+  Roles: any = ['Admin', 'Author', 'Reader'];
   ngOnInit(): void {
+    this.userId=this.route.snapshot.paramMap.get("id");
   }
+  
 
 }
