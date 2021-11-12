@@ -1,20 +1,34 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoginCompComponent } from './login-comp/login-comp.component';
+import { ViewCompComponent } from './view-comp/view-comp.component';
+import { SubmitCompComponent } from './submit-comp/submit-comp.component';
+import { NavCompComponent } from './nav-comp/nav-comp.component';
+import { FormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import { SearchbarComponent } from './searchbar/searchbar.component'
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    LoginCompComponent,
+    ViewCompComponent,
+    SubmitCompComponent,
+    NavCompComponent,
+    SearchbarComponent
   ],
   imports: [
-    MDBBootstrapModule.forRoot(),
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule,
+    FormsModule,
+    HttpClientModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
