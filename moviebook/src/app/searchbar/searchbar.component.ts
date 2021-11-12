@@ -1,6 +1,10 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Observable } from 'rxjs';
+
 import { Movie } from '../movie';
+
 import { MovieToBackendService } from '../movie-to-backend.service';
+import { HideComponentService } from '../hide-component.service';
 
 
 @Component({
@@ -43,8 +47,11 @@ export class SearchbarComponent implements OnInit {
   };
 
 
-  constructor( private renderer : Renderer2,
-    private movieToBackend : MovieToBackendService
+
+  constructor( 
+    private renderer : Renderer2,
+    private movieToBackend : MovieToBackendService,
+    private hider : HideComponentService
   ) { }
 
 
@@ -80,23 +87,17 @@ export class SearchbarComponent implements OnInit {
 
     this.button1.innerText = "Hide Search Bar";
     this.renderer.listen(this.button1, 'click', () => {
-      this.hideDiv(this.searchDiv);
+
+      this.hider.hideComponent(this.searchDiv);//, this.renderer);
+
     });
     this.renderer.appendChild(this.searchDiv, this.button1);
 
   }
 
-  hideDiv(body : HTMLElement) { 
+  hideSearch(body : HTMLElement, renderer : Renderer2) : void {
 
-    console.log("Starting Hide Div");
-
-    while (body.firstChild) {
-
-      body.removeChild(body.firstChild);
-
-    }
-
-    this.renderer.setStyle(body, 'border', "none");
+    this.hider.hideComponent(body);//, renderer);
 
   }
 
