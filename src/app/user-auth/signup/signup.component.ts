@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import {SignupInfo} from '../models/signup-info'
 
 @Component({
   selector: 'app-signup',
@@ -7,11 +8,15 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-userId:any='';
+
   constructor(private route: ActivatedRoute) { }
-  Roles: any = ['Admin', 'Author', 'Reader'];
+  
+  signup(register:SignupInfo){
+
+  }
+
   ngOnInit(): void {
-    this.userId=this.route.snapshot.paramMap.get("id");
+   // this.userId=this.route.snapshot.paramMap.get("id");
   }
   
 

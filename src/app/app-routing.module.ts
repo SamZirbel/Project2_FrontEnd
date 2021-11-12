@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { NoPageComponent } from './no-page/no-page.component';
 import { ForgetPassComponent } from './user-auth/forget-pass/forget-pass.component';
 import { LoginAuthComponent } from './user-auth/login-auth/login-auth.component';
+import { ResetPassComponent } from './user-auth/reset-pass/reset-pass.component';
 import { SignupComponent } from './user-auth/signup/signup.component';
 
 const routes: Routes = [
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'forgetpass',
     component: ForgetPassComponent,
+  },
+  {
+    path: 'resetpass',
+    component: ResetPassComponent,
   },
   {
     path: '', pathMatch: 'full', redirectTo: 'login'

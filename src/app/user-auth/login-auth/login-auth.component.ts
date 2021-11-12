@@ -1,39 +1,37 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbDatepickerNavigationSelect } from '@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation-select';
 import { LoginInfo } from '../models/login-info';
-import {UserServiceService} from '../services/user-service.service';
-
+import { UserServiceService } from '../services/user-service.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login-auth',
   templateUrl: './login-auth.component.html',
-  styleUrls: ['./login-auth.component.css']
+  styleUrls: ['./login-auth.component.css'],
 })
 export class LoginAuthComponent implements OnInit {
+  constructor(private services : UserServiceService, private router: Router) {}
 
-  constructor(private service:UserServiceService) {
+  user:string="";
+
+  forgetpass(){
+      this.router.navigateByUrl("forgetpass")
   }
-
-  user:string='';
-  pass:string='';
-
-   lg:LoginInfo|null=null;
   
   
-  message:any;
-  doLogin(fdata:any)
-  {
-    console.warn(fdata.username);
-    this.lg= new LoginInfo(fdata.username,fdata.password);
-    
-    let resp=this.service.login(this.lg);
-    
-    
-    resp.subscribe(
-      data=>{
-        console.log(data);
-      }
 
-    )
+   message: any;
+  doLogin(fdata: LoginInfo) {
+  
+    console.log(fdata.username);
+    //let resp=this.service.login(this.lg);
+
+    //resp.subscribe(
+    // //  data=>{
+    //     console.log(data);
+    //   }
+
+    //)
   }
   // log:LoginInfo|null=null;
   // userData:any;
@@ -41,13 +39,12 @@ export class LoginAuthComponent implements OnInit {
   //   console.log(data.user);
   //   console.log(data.pass);
   //   this.log=new LoginInfo(data.user,data.pass);
-//     this.api.login(this.log).subscribe(res => {
-//       console.log(res);
-//       console.log("inside")
-      
-//  });
+  //     this.api.login(this.log).subscribe(res => {
+  //       console.log(res);
+  //       console.log("inside")
 
- 
+  //  });
+
   // }
   // loggedId: any=0;
   // //is remember me ...................................
@@ -66,15 +63,10 @@ export class LoginAuthComponent implements OnInit {
   //   }
   // }
 
- 
   ngOnInit(): void {
-   // this.loggedId =sessionStorage.setItem("userId","0");
-
+    // this.loggedId =sessionStorage.setItem("userId","0");
   }
-  ngAfterViewInit(): void{
-   // this.loggedId =sessionStorage.getItem("userId");
-
+  ngAfterViewInit(): void {
+    // this.loggedId =sessionStorage.getItem("userId");
   }
-
-
 }

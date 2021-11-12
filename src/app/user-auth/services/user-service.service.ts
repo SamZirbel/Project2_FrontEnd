@@ -12,7 +12,7 @@ export class UserServiceService {
    URL = "http://localhost:8085/";
   constructor(private http:HttpClient) {   }
 
-  login(data:LoginInfo):Observable<LoginInfo>
+  login(data:LoginInfo)//:Observable<LoginInfo>
   {
     let httpOptions = {
       headers: new HttpHeaders({
@@ -24,7 +24,7 @@ export class UserServiceService {
       })
     }
 
-    return this.http.get<LoginInfo>(URL+"login"+"/", httpOptions) as Observable<LoginInfo>
+    //return this.http.get<LoginInfo>(URL+"login"+"/", httpOptions) as Observable<LoginInfo>
     //return this.http.post<LoginInfo>(URL+"login"+"/", JSON.stringify(data), this.httpOptions)
     //return this.http.get("https://pokeapi.co/api/v2/pokemon/"+id+"/") as Observable<Pokemon>; 
   }
