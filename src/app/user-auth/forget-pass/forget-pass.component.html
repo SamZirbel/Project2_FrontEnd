@@ -4,24 +4,15 @@
       <mat-card-title>Forget Password</mat-card-title>
     </mat-card-header>
 
-    <form class="example-form" #form="ngForm" (ngSubmit)="resetpass()">
+    <form class="example-form" #form="ngForm" (ngSubmit)="resetpass(form.value)">
       <mat-card-content>
-     
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Name">
-        </mat-form-field>
-      
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Username">
-        </mat-form-field>
-
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Email">
-        </mat-form-field>
+          <input matInput placeholder="Username" type="text" name="username" ngModel>
+        </mat-form-field> 
 
       </mat-card-content>
 
-      <button mat-stroked-button color="accent" class="btn-block" type="submit">Reset password</button>
+      <button mat-stroked-button color="accent" class="btn-block" type="submit">Find password</button>
 
     </form>
   </mat-card>

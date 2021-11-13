@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import {SignupInfo} from '../models/signup-info'
+import { ActivatedRoute,Router } from '@angular/router';
+import {SignupInfo} from '../models/signup-info';
+import {UserServiceService} from '../services/user-service.service'
 
 @Component({
   selector: 'app-signup',
@@ -9,13 +10,17 @@ import {SignupInfo} from '../models/signup-info'
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private router: Router, private service: UserServiceService) { }
   
   signup(register:SignupInfo){
-
+    this.service.signup(register).subscribe((data) => {
+      this.router.navigateByUrl('login'); 
+    });
   }
 
   ngOnInit(): void {
+    if (sessionStorage.getItem('token') != null) {
+      this.router.navigateByUrl('home');}
    // this.userId=this.route.snapshot.paramMap.get("id");
   }
   
