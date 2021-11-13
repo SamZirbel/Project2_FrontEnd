@@ -1,4 +1,4 @@
-//import { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -9,23 +9,30 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {UserAuthModule} from './user-auth/user-auth.module'
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { NoPageComponent } from './no-page/no-page.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {AngularMaterialModule} from './angular-material/angular-material.module';
-import { NgModule,NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HomeComponent } from './home/home.component';
+
+
+
+//import { MDBBootstrapModule } from 'angular-bootstrap-md';
+
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { SearchbarComponent } from './searchbar/searchbar.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavBarComponent,
     NoPageComponent,
-    HomeComponent
+    HomeComponent,
+    SearchbarComponent,
+    NavBarComponent
    ],
   imports: [
     BrowserModule,
