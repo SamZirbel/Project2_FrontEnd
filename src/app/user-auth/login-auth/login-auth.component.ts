@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 //import { NgbDatepickerNavigationSelect } from '@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation-select';
 import { LoginInfo } from '../models/login-info';
 import { UserServiceService } from '../services/user-service.service';
-import {Router} from '@angular/router';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-auth',
@@ -11,28 +10,24 @@ import {Router} from '@angular/router';
   styleUrls: ['./login-auth.component.css'],
 })
 export class LoginAuthComponent implements OnInit {
-  constructor(private service : UserServiceService, private router: Router) {}
-  tokenized:any;
-  
-  forgetpass(){
-      this.router.navigateByUrl("forgetpass")
-  }
-  
-  doLogin(fdata: LoginInfo) {
-  
-   // console.log(fdata.username);
-    this.service.generateToken(fdata).subscribe(
-      data=>{
-        this.tokenized =sessionStorage.setItem("token", data);
-        this.router.navigateByUrl('home');
-        
-      }
+  constructor(private service: UserServiceService, private router: Router) {}
 
-    )
+  forgetpass() {
+    this.router.navigateByUrl('forgetpass');
   }
- 
- 
- 
+
+  doLogin(fdata: LoginInfo) {
+    // console.log(fdata.username);
+    this.service.generateToken(fdata).subscribe((data) => {
+      sessionStorage.setItem('token', data);
+      this.service.getUserInfo(fdata.username).subscribe((userdata) => {
+        sessionStorage.setItem('user', JSON.stringify(userdata));
+        console.log(userdata);
+      });
+      this.router.navigateByUrl('home');
+    });
+  }
+
   // //is remember me ...................................
   // lsRememberMe(rem:any, usr:any, pass:any) {
   //   //console.log(rem )
@@ -50,9 +45,8 @@ export class LoginAuthComponent implements OnInit {
   // }
 
   ngOnInit(): void {
-    if(sessionStorage.getItem("token")!=null){
+    if (sessionStorage.getItem('token') != null) {
       this.router.navigateByUrl('home');
-     }
+    }
   }
-  
 }

@@ -4,7 +4,7 @@
         <mat-card-title>Register</mat-card-title>
       </mat-card-header>
   
-      <form class="example-form" #form="ngForm" [ngSubmit]="signup(form.value)">
+      <form class="example-form" #form="ngForm" (submit)="signup(form.value)">
         <mat-card-content>
        
           <mat-form-field class="example-full-width">
@@ -20,7 +20,7 @@
           </mat-form-field> 
   
           <mat-form-field class="example-full-width">
-            <input matInput="Password" placeholder="Password" type="text" name="password" ngModel>
+            <input matInput="Password" placeholder="Password" type="password" name="password" ngModel>
           </mat-form-field>
 
           <!-- <mat-form-field class="example-full-width">

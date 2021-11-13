@@ -10,6 +10,7 @@ import { NgModule,NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {FormsModule } from '@angular/forms/';
 import { ResetPassComponent } from './reset-pass/reset-pass.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 
@@ -18,7 +19,8 @@ import { ResetPassComponent } from './reset-pass/reset-pass.component';
     LoginAuthComponent,
     SignupComponent,
     ForgetPassComponent,
-    ResetPassComponent 
+    ResetPassComponent,
+    ChangePasswordComponent 
   ],
   imports: [
     CommonModule,
