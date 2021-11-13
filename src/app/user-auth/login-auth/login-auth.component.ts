@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbDatepickerNavigationSelect } from '@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation-select';
+//import { NgbDatepickerNavigationSelect } from '@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation-select';
 import { LoginInfo } from '../models/login-info';
 import { UserServiceService } from '../services/user-service.service';
 import {Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-login-auth',
@@ -23,7 +24,8 @@ export class LoginAuthComponent implements OnInit {
     this.service.generateToken(fdata).subscribe(
       data=>{
         this.tokenized =sessionStorage.setItem("token", data);
-        console.log(data);
+        this.router.navigateByUrl('home');
+        
       }
 
     )
@@ -52,7 +54,5 @@ export class LoginAuthComponent implements OnInit {
       this.router.navigateByUrl('home');
      }
   }
-  ngAfterViewInit(): void {
-     
-  }
+  
 }
