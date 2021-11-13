@@ -23,40 +23,50 @@ export class UserServiceService {
     return sessionStorage.getItem('token') as any;
   }
 
-
-   httpOptions = {
+  httpOptions = {
     headers: new HttpHeaders({
       Authorization: this.overrideNull(),
       responseType: 'text' as 'json',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': '*',
-       'Content-Type': 'application/json',
-       'Access-Control-Allow-Headers': 'Content-Type',
-      'Access-Control-Allow-Credentials': 'true'
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Allow-Credentials': 'true',
     }),
   };
 
-  public signup(register:any): Observable<SignupInfo>{
+  public signup(register: any): Observable<SignupInfo> {
     console.log(register);
-    return this.http.post<SignupInfo>(this.URL + 'register', JSON.stringify(register), this.httpOptions);
- 
+    return this.http.post<SignupInfo>(
+      this.URL + 'register',
+      JSON.stringify(register),
+      this.httpOptions
+    );
   }
-  public getUserInfo(user:string): Observable<UserInfo>{
-      return this.http.get(this.URL + 'user/' + user, this.httpOptions) as Observable<UserInfo>;
+  public getUserInfo(user: string): Observable<UserInfo> {
+    return this.http.get(
+      this.URL + 'user/' + user,
+      this.httpOptions
+    ) as Observable<UserInfo>;
+  }
+  
+  public geUpdatePass(id: any, pass: UserInfo): Observable<any> {
+    return this.http.put(
+      this.URL + 'passupdate/' + id,
+      JSON.stringify(pass),
+      this.httpOptions
+    );
   }
 
-  public geUpdatePass(id:any, pass:UserInfo): Observable<any>{
-    return this.http.put(this.URL + 'passupdate/' + id, JSON.stringify(pass) ,this.httpOptions) ;
-}
-
+  
 
   // public welcome(token1:any): Observable<LoginInfo> {
   //   console.log(this.overrideNull());
 
   //  // return this.http.post<string>('http://localhost:8085/welcome',JSON.stringify({"username": "user1"}), httpOptions);
- 
+
   //   return this.http.get(
-  //    ' http://localhost:8085/user/user1', 
+  //    ' http://localhost:8085/user/user1',
   //     this.httpOptions
   //   ) as Observable<LoginInfo>;
   //   //return this.http.get(this.URL+"welcome", {headers, responseType:'text' as 'json'});

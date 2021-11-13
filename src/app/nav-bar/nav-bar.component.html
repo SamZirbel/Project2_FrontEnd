@@ -1,20 +1,43 @@
 <mat-toolbar color="primary" class="app-header">
-    <div><H1>MovieBook</H1></div>
-    <span class="nav-tool-items" >
-     
-      
-      <h2 *ngIf="show==0; then ifblock else elseBlock"></h2>
-      <ng-template #ifblock>
-        <a mat-button mat-raised-button class="log" routerLink="login" routerLinkActive="active">Log in</a>
-        <a mat-button mat-raised-button class="log" routerLink="register" routerLinkActive="active">Register</a>
-      </ng-template>
-      <ng-template #elseBlock>
-        <a mat-button mat-raised-button class="log" routerLinkActive="active" routerLink="changepass">Change Password</a>
-      
-        <a mat-button mat-raised-button class="log" routerLinkActive="active" (click)="logout()">Logout</a>
-      </ng-template>
-    
-    </span>
-   
-  </mat-toolbar>
- 
+  <div><a  ></a><H1>MovieBook</H1></div>
+  <span class="nav-tool-items">
+    <h2 *ngIf="show == 0; then ifblock; else elseBlock"></h2>
+    <ng-template #ifblock>
+      <a
+        mat-button
+        mat-raised-button
+        class="log"
+        routerLink="login"
+        routerLinkActive="active"
+        >Log in</a
+      >
+      <a
+        mat-button
+        mat-raised-button
+        class="log"
+        routerLink="register"
+        routerLinkActive="active"
+        >Register</a
+      >
+    </ng-template>
+    <ng-template #elseBlock>
+      <a
+        mat-button
+        mat-raised-button
+        class="log"
+        routerLinkActive="active"
+        routerLink="changepass"
+        >Change Password</a
+      >
+
+      <a
+        mat-button
+        mat-raised-button
+        class="log"
+        routerLinkActive="active"
+        (click)="logout()"
+        >Logout</a
+      >
+    </ng-template>
+  </span>
+</mat-toolbar>
