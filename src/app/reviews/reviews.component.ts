@@ -13,6 +13,7 @@ import { ReviewToBackendService } from '../services/review-to-backend.service';
 export class ReviewsComponent implements OnInit {
 
   movie : Movie;
+  reviews : Array<Review> = [];
 
   constructor(private movieService: MovieToBackendService, private reviewService: ReviewToBackendService) { }
 
@@ -20,19 +21,11 @@ export class ReviewsComponent implements OnInit {
   }
 
   populateReviews(){
-    this.reviewService.getReviews(this.movie).subscribe({
-      next(reviews){
-        reviews.forEach(review => {
-          let content = document.createElement("p");
-          content.className = "reviewClass";
-          content.innerText = review.reviewContent;
-          let username = document.createElement("span");
-          username.className = "reviewClass";
-          username.innerText = review.username;
-          //TODO
-        })
+    this.reviewService.getReviews(this.movie).subscribe(
+      reviewList => {
+        this.reviews = reviewList;
       }
-    })
+    )
   }
 
 }

@@ -10,6 +10,7 @@ import { ResetPassComponent } from './user-auth/reset-pass/reset-pass.component'
 import { SignupComponent } from './user-auth/signup/signup.component';
 
 import { SearchbarComponent } from './searchbar/searchbar.component';
+import { ReviewsComponent } from './reviews/reviews.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,10 @@ const routes: Routes = [
   {
     path: 'resetpass',
     component: ResetPassComponent,
+  },
+  {
+    path: 'movie/id',
+    component: ReviewsComponent,
   },
   {
     path: '', pathMatch: 'full', redirectTo: 'login'
