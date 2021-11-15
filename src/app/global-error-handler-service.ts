@@ -10,8 +10,8 @@ import { throwError } from 'rxjs';
    
    
     handleError(error: Error | HttpErrorResponse) {
-      console.log('GlobalErrorHandlerService')
-      console.error(error);
+      //console.log('GlobalErrorHandlerService')
+      //console.error(error);
     }
 
 }

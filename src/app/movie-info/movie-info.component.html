@@ -4,9 +4,9 @@
   Movie info
 </h1>
 
-<p id = "TitleText">
-  This Is Text {{movieTitle}}
-</p>
+<p id = "TitleText" *ngFor="let item of movieTitle">
+  This Is Text {{item}}
+<br></p>
 
 <table class="Movie List">
   <thead>
@@ -26,4 +26,10 @@
         routerLinkActive="active"
         >{{t.title}}</a>
       </td>
-      <td>{{t.release}}</td>git
+      <td>{{t.release}}</td>
+      <td>{{t.synopsis}}</td>
+      <td>{{t.genre}}</td>
+      <td>{{t.director}}</td>
+    </tr>
+  </tbody>
+</table>

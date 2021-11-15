@@ -21,30 +21,32 @@ import { Router } from '@angular/router';
 
 export class SearchbarComponent implements OnInit {
 
+
+  rest:any[]=[];
   dosomething(sea:any){
 
     if (!(sessionStorage.getItem('result') == null)) { 
-
       sessionStorage.removeItem('result');
-
     }
-  // console.log(sea.seah)
+ 
   this.apiServicer.getAllMovies(sea.seah).subscribe(res=>{
-    
-    //console.log(Object(res).Search[0].imdbID )
     for(let i:any=0; i<Object(res).Search.length; i++){ 
+      this.rest.length=0;
     this.apiServicer.getSeriesMovies(Object(res).Search[i].imdbID).subscribe(res2=>{
-      //console.log(res2 )
-      sessionStorage.setItem("result", JSON.stringify(res2));
-      //sessionStorage.setItem("flag", "flag String");
+      
+      this.rest.push(res2)
+      
+      if((Object(res).Search.length-1)==i){
+        console.log(this.rest)
+        sessionStorage.setItem("result", JSON.stringify(this.rest));
+      }
     })
+   
     } // << End FOr Loop
 
   }) // << End Of API First Subscription
 
-    console.error("Something");
-    this.router.navigateByUrl('Something Wrong');
-    this.router.navigateByUrl('home');
+   this.ngOnInit();
 
   }
 

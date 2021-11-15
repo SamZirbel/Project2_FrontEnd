@@ -18,7 +18,7 @@ import { Title } from '@angular/platform-browser';
 export class MovieInfoComponent implements OnInit {
 
   @Input() movie : Movie = new Movie("", "", "", "", "");
-  movieTitle:any;//this.movie.title;
+  movieTitle:any[]=[];//this.movie.title;
 
   public titles : Array<String> = [];
   public releases : Array<String> = [];
@@ -34,132 +34,34 @@ export class MovieInfoComponent implements OnInit {
     renderer : Renderer2,
     
   ) { }
-    //fds:any;
+    fds:any;
     
-    
-   
-
   ngOnInit(): void {
-    
-    console.log(this.titles.length);
-
-    this.titles.length = 0;
-
-
-  }
-
-  getfrom(fds : any) {
-
-    const result = JSON.parse(this.fds);
-
-    if (result) {
-
-    console.log(result.Title);
-    this.titles.push(result.Title);
-
-    }
-
-  }
-
-
-
-  public fds : any = sessionStorage.getItem('result');
-  
-  public fd2 : any;
-
-  //ngDoCheck(){
-
-  public readFlag : number = 0;
-
-  public activeCompare : String = "";
-
-  public match : number = 0;
-
-  ngOnChange() {
-
-    this.titles.length = 0;
-
-  }
-
-  public lastSize : number = 0;
+   }
 
   ngAfterViewChecked() {
-
-    
-
-    this.fd2=sessionStorage.getItem('flag');
-    if (this.fd2 == "flag String") {
-
-      this.titles.length = 0;
-      sessionStorage.removeItem('flag');
-
-    }
-
-    this.fds=sessionStorage.getItem('result');
-    const result=JSON.parse(this.fds);
-    console.log(result.Title);
-
-    let lengthStor : typeof sessionStorage;
-    
-    // if (result.length == this.lastSize) {
-
-    //   this.titles.length = 0;
-
-    // }
-
-    // this.lastSize = result.length;
-
-    if (!result) {
-      console.error("WOOOOH");
-    }
-
-    console.error(sessionStorage.getItem('result')?.length);
-    console.error();
-
-    if (result.length == 0) { this.titles.length = 0; }
-
-    this.match = 0;
-
-    for (let i = 0; i < this.titles.length; ++ i) {
-
-      this.activeCompare = this.titles[i];
-
-      if (this.activeCompare == result.Title) {
-
-        //console.error("Match");
-        this.match = 1;
-
-      }
-
-    }
-
-    if (this.match == 0) {
-
-      this.titles.push(result.Title);
-
-      this.movies.push(new Movie(result.Title, result.Released,
-        result.Plot, result.Genre, result.Director));
-      //this.releases.push(result.Released);
-      //this.synopsi.push(result.Plot);
-      //this.genres.push(result.Genre);
-      //this.directors.push(result.Director);
-
-      console.log(this.titles);
-
-    }
-   
-    //this.ngOnInit();
-
-
-  } // << End Of ngAfterViewChecked
-
-  ngOnDestroy() {
-
-    
-    this.titles.length = 0;
-
+  
+  this.movies.length=0;
+  this.titles.length=0
   }
+   // << End Of ngAfterViewChecked
+   ngAfterContentChecked(){
+    this.fds=sessionStorage.getItem('result');
+    let result=JSON.parse(this.fds);
+    //console.log(result.Title);
+    
+    if(result.length>0&& result!=null){
+    for(let item of result){
+      //console.log(item.Title)
+      this.titles.push(item.Title);
 
-
-
+      this.movies.push(new Movie(item.Title, item.Released,
+        item.Plot, item.Genre, item.Director));
+    }
+  }
+    sessionStorage.removeItem('result');
+   
+  
+ }
+ 
 }
