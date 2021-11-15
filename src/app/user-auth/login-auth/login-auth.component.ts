@@ -7,6 +7,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Location } from '@angular/common';
 import { SuccessDialogComponent } from '../../shared/dialogs/success-dialog/success-dialog.component';
 
+
+
 import {
   FormControl,
   FormGroup,
@@ -24,7 +26,6 @@ import { SearchbarComponent } from '../../searchbar/searchbar.component';
   styleUrls: ['./login-auth.component.css'],
 })
 export class LoginAuthComponent implements OnInit {
-<<<<<<< HEAD
   constructor(private service: UserServiceService, private router: Router) {}
 
   public form = new FormGroup({
@@ -44,20 +45,7 @@ export class LoginAuthComponent implements OnInit {
   // Methods
   forgetpass() {
     this.router.navigateByUrl('forgetpass');
-=======
-  
 
-  constructor(
-      private service : UserServiceService, 
-      private router: Router
-  ) {}
-  
-
-  tokenized:any;
-  
-  forgetpass(){
-      this.router.navigateByUrl("forgetpass")
->>>>>>> search3
   }
 
   errorMsg: string = '';
@@ -81,12 +69,7 @@ export class LoginAuthComponent implements OnInit {
       );
     });
   }
-<<<<<<< HEAD
 
-=======
- 
- 
->>>>>>> search3
   // //is remember me ...................................
   // lsRememberMe(rem:any, usr:any, pass:any) {
   //   //console.log(rem )

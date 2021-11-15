@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
 
   constructor(    
     private renderer : Renderer2,
+    //private searchbar : SearchbarComponent
   ) { }
 
   //private readonly root : HTMLElement | null = document.querySelector('app-home');
