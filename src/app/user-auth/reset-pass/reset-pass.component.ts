@@ -22,7 +22,14 @@ export class ResetPassComponent implements OnInit {
         if(pdata!=null)
         alert("password changed successfully")
         sessionStorage.removeItem("temp")
-    });
+    },
+    (error) => {                              //Error callback
+      console.error('error caught in reset password component')
+     console.error(error);
+
+      //throw error;   //You can also throw the error to a global error handler
+    }
+    );
   }
 
 

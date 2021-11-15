@@ -4,6 +4,8 @@ import { LoginInfo } from '../models/login-info';
 import { Observable } from 'rxjs';
 import { SignupInfo } from '../models/signup-info';
 import { UserInfo } from '../models/user-info';
+import { throwError } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +17,12 @@ export class UserServiceService {
   public generateToken(request: LoginInfo): Observable<string> {
     return this.http.post<string>('http://localhost:8085/loginauth', request, {
       responseType: 'text' as 'json',
-    });
+    }) .pipe(
+      catchError((err) => {
+        console.log('error caught in service > generate Token method')
+        console.error(err);
+       return throwError(err);    //Rethrow it back to component
+      }));
   }
 
   overrideNull(): string {
@@ -41,7 +48,12 @@ export class UserServiceService {
       this.URL + 'register',
       JSON.stringify(register),
       this.httpOptions
-    );
+    ).pipe(
+      catchError((err) => {
+        console.log('error caught in service > signup')
+        console.error(err);
+       return throwError(err);    //Rethrow it back to component
+      }));;
   }
   public getUserInfo(user: string): Observable<UserInfo> {
     return this.http.get(
@@ -60,16 +72,4 @@ export class UserServiceService {
 
   
 
-  // public welcome(token1:any): Observable<LoginInfo> {
-  //   console.log(this.overrideNull());
-
-  //  // return this.http.post<string>('http://localhost:8085/welcome',JSON.stringify({"username": "user1"}), httpOptions);
-
-  //   return this.http.get(
-  //    ' http://localhost:8085/user/user1',
-  //     this.httpOptions
-  //   ) as Observable<LoginInfo>;
-  //   //return this.http.get(this.URL+"welcome", {headers, responseType:'text' as 'json'});
-  //   //return this.http.post<LoginInfo>(URL+"login"+"/", JSON.stringify(data), this.httpOptions)
-  // }
 }

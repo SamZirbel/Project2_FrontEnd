@@ -32,7 +32,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTooltipModule } from '@angular/material/tooltip';
-
+import { MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -72,7 +72,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   MatGridListModule,
   MatRadioModule,
   MatDatepickerModule,
-  MatTooltipModule
+  MatTooltipModule,
+MatDialogModule
+
   ],
   exports: [
     CdkTreeModule,
@@ -106,7 +108,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   MatGridListModule,
   MatRadioModule,
   MatDatepickerModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatDialogModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ], 
   

@@ -21,6 +21,12 @@ export class ForgetPassComponent implements OnInit {
       sessionStorage.setItem('temp',  JSON.stringify(userdata));
       this.router.navigateByUrl('resetpass');
     }
+    },
+    (error) => {                              //Error callback
+      console.error('error caught in forget pass component')
+     console.error(error);
+
+      //throw error;   //You can also throw the error to a global error handler
     })
    
   }
