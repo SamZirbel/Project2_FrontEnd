@@ -43,25 +43,45 @@ export class MovieInfoComponent implements OnInit {
   
   this.movies.length=0;
   this.titles.length=0
-  }
-   // << End Of ngAfterViewChecked
-   ngAfterContentChecked(){
+  }// << End Of ngAfterViewChecked
+   
+
+  ngAfterContentChecked(){
     this.fds=sessionStorage.getItem('result');
     let result=JSON.parse(this.fds);
     //console.log(result.Title);
     
     if(result.length>0&& result!=null){
-    for(let item of result){
-      //console.log(item.Title)
-      this.titles.push(item.Title);
+    
 
-      this.movies.push(new Movie(item.Title, item.Released,
-        item.Plot, item.Genre, item.Director));
+    for(let item of result){
+
+      if (item.Type == "movie") {
+
+
+        //console.log(item.Title)
+        this.titles.push(item.Title);
+
+        if (item.Plot != "N/A" && item.Genre != "N/A") {
+
+          this.movies.push(new Movie(item.Title, item.Released,
+            item.Plot, item.Genre, item.Director));
+
+        }
+      }
+
     }
-  }
-    sessionStorage.removeItem('result');
-   
-  
- }
+    }
+
+    if (this.movies.length > 0) {
+      sessionStorage.removeItem('result');
+    }else {
+
+      this.ngAfterContentChecked();
+
+    }
+
+
+  } // << End OF ngAfterCOntentChecked
  
 }

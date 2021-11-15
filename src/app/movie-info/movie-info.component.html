@@ -1,35 +1,36 @@
-<p>movie-info works!</p>
 
-<h1>
+<div id = "HomeMovieInfoHolder">
+
+  <h1 id = "HomeMovieInfoTitle">
   Movie info
-</h1>
+  </h1>
 
-<p id = "TitleText" *ngFor="let item of movieTitle">
-  This Is Text {{item}}
-<br></p>
+  <table class="table table-striped table-light table-hover
+      table-sm"
+    id="movieList">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col"> Title </th>
+        <th scope="col"> Release </th>
+        <th scope="col"> Plot </th>
+        <th scope="col"> Genre </th>
+        <th scope="col"> Director </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of movies">
+        <th scope="row" id = "homeMovieTitleColumn">
+          <a
+          routerLink="login"
+          routerLinkActive="active"
+          >{{t.title}}</a>
+        </th>
+        <td>{{t.release}}</td>
+        <td>{{t.synopsis}}</td>
+        <td>{{t.genre}}</td>
+        <td>{{t.director}}</td>
+      </tr>
+    </tbody>
+  </table>
 
-<table class="Movie List">
-  <thead>
-    <tr>
-      <th scope="col"> Title </th>
-      <th scope="col"> Release </th>
-      <th scope="col"> Plot </th>
-      <th scope="col"> Genre </th>
-      <th scope="col"> Director </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let t of movies">
-      <td>
-        <a
-        routerLink="login"
-        routerLinkActive="active"
-        >{{t.title}}</a>
-      </td>
-      <td>{{t.release}}</td>
-      <td>{{t.synopsis}}</td>
-      <td>{{t.genre}}</td>
-      <td>{{t.director}}</td>
-    </tr>
-  </tbody>
-</table>
+</div>

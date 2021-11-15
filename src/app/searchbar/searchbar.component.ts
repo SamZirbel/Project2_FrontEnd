@@ -29,6 +29,9 @@ export class SearchbarComponent implements OnInit {
       sessionStorage.removeItem('result');
     }
  
+
+
+
   this.apiServicer.getAllMovies(sea.seah).subscribe(res=>{
     for(let i:any=0; i<Object(res).Search.length; i++){ 
       this.rest.length=0;
@@ -45,6 +48,16 @@ export class SearchbarComponent implements OnInit {
     } // << End FOr Loop
 
   }) // << End Of API First Subscription
+
+
+    // this.apiServicer.getAllMovies(sea.seah).pipe(
+    //   switchMap( (res :any) this.
+
+    // this.queryResults(title).pipe(
+    //   switchMap( (movieData : any) this.queryID().pipe(
+    //       map( (movies : any) => ({movies, movieData}) )
+    //     ))
+    //   )
 
    this.ngOnInit();
 
