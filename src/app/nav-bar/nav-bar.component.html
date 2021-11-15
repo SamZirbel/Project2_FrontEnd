@@ -1,43 +1,77 @@
 <mat-toolbar color="primary" class="app-header">
-  <div><a  ></a><H1>MovieBook</H1></div>
-  <span class="nav-tool-items">
+  <div>
+    <a routerLink="/home" routerLinkActive="active" class="home inline"><H1>MovieBook</H1></a>
+    <span class="nav-tool-items1 inline">
+      <h2 *ngIf="show == 1; then loggedIn;"></h2>
+      <ng-template #loggedIn>
+        <a routerLink="/home" routerLinkActive="active" class="navbutton">
+          <button mat-mini-fab color="primary" aria-label="home button">
+            <mat-icon>home</mat-icon>
+          </button>
+        </a>
+        <a
+          mat-button
+          mat-raised-button
+          class="navbutton"
+          color="primary"
+          routerLink="/home"
+          routerLinkActive="active"
+          >Movies
+        </a>
+        <a
+          mat-button
+          mat-raised-button
+          class="navbutton"
+          color="primary"
+          routerLink="/home"
+          routerLinkActive="active"
+          >My Favorites
+        </a>
+      </ng-template>
+    </span>
+  </div>
+  <span class="nav-tool-items2">
     <h2 *ngIf="show == 0; then ifblock; else elseBlock"></h2>
     <ng-template #ifblock>
-      <a
-        mat-button
-        mat-raised-button
-        class="log"
-        routerLink="login"
-        routerLinkActive="active"
-        >Log in</a
-      >
-      <a
-        mat-button
-        mat-raised-button
-        class="log"
-        routerLink="register"
-        routerLinkActive="active"
-        >Register</a
-      >
+      <div class="nav2">
+        <a
+          mat-button
+          mat-raised-button
+          class="log"
+          routerLink="login"
+          routerLinkActive="active"
+          >Log in
+        </a>
+        <a
+          mat-button
+          mat-raised-button
+          class="log"
+          routerLink="register"
+          routerLinkActive="active"
+          >Register
+        </a>
+      </div>
     </ng-template>
     <ng-template #elseBlock>
-      <a
-        mat-button
-        mat-raised-button
-        class="log"
-        routerLinkActive="active"
-        routerLink="changepass"
-        >Change Password</a
-      >
+      <div class="nav2">
+        <a
+          mat-button
+          mat-raised-button
+          class="log"
+          routerLinkActive="active"
+          routerLink="changepass"
+          >Change Password</a
+        >
 
-      <a
-        mat-button
-        mat-raised-button
-        class="log"
-        routerLinkActive="active"
-        (click)="logout()"
-        >Logout</a
-      >
+        <a
+          mat-button
+          mat-raised-button
+          class="log"
+          routerLinkActive="active"
+          (click)="logout()"
+          >Logout</a
+        >
+      </div>
     </ng-template>
   </span>
 </mat-toolbar>
