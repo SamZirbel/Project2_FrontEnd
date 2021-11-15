@@ -17,7 +17,7 @@ export class AppHttpInterceptor implements HttpInterceptor {
        
         if (!req.headers.has('Authorization')) {
             console.log('header not working')
-           // req = req.clone({ headers: req.headers.set('Authorization', this.overrideNull()) });
+            req = req.clone({ headers: req.headers.set('Authorization', this.overrideNull()) });
         }
        
         return next.handle(req).pipe(

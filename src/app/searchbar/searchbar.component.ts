@@ -8,7 +8,6 @@ import { HideComponentService } from '../services/hide-component.service';
 import { DateFormaterService } from '../services/date-formater.service';
 import { ApiService } from '../services/api.service';
 import { MovieInfoHolderService } from '../services/movie-info-holder.service';
-import { ImdbMultiData } from '../models/imdb-multi-data';
 
 @Component({
   selector: 'app-searchbar',
@@ -19,21 +18,6 @@ import { ImdbMultiData } from '../models/imdb-multi-data';
 
 
 export class SearchbarComponent implements OnInit {
-
-  dosomething(sea:any){
-   // console.log(sea.seah)
-  this.apiServicer.getAllMovies(sea.seah).subscribe(res=>{
-    
-    //console.log(Object(res).Search[0].imdbID )
-    for(let i:any=0; i<Object(res).Search.length; i++){ 
-    this.apiServicer.getSeriesMovies(Object(res).Search[i].imdbID).subscribe(res2=>{
-      //console.log(res2 )
-      sessionStorage.setItem("result", JSON.stringify(res2));
-    })
-  }
-  })
-  }
-
 
   // VV API QUery URL Constant Variables
   // VV ==================================
@@ -244,7 +228,7 @@ export class SearchbarComponent implements OnInit {
 
     console.log("Received Date : " + formattedDate.toString());
 
-   // queryMovie.release = formattedDate;
+    queryMovie.release = formattedDate;
 
     console.log("FOrmatted Date For Backend : " + queryMovie.release);
     console.log(queryMovie);
