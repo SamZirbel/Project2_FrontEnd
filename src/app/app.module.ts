@@ -19,12 +19,16 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { HomeComponent } from './home/home.component';
 import {AppHttpInterceptor} from './user-auth/services/app-http-interceptor'
 import  {GlobalErrorHandlerService} from './global-error-handler-service';
+import { SuccessDialogComponent } from './shared/dialogs/success-dialog/success-dialog.component';
+import { ErrorDialogComponent } from './shared/dialogs/error-dialog/error-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
     NoPageComponent,
-    HomeComponent
+    HomeComponent,
+    SuccessDialogComponent,
+    ErrorDialogComponent
    ],
   imports: [
     BrowserModule,

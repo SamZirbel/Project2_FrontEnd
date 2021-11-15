@@ -38,6 +38,7 @@ export class AppHttpInterceptor implements HttpInterceptor {
                       handled = true;
                       break;
                     case 403:     //forbidden
+                    alert("Please log in...")
                       this.router.navigateByUrl("/login");
                       console.log(`redirect to login`);
                       handled = true;

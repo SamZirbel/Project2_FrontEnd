@@ -3,8 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { LoginInfo } from '../models/login-info';
 import { UserServiceService } from '../services/user-service.service';
 import { Router } from '@angular/router';
-import { catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { Location } from '@angular/common';
+import { SuccessDialogComponent } from '../../shared/dialogs/success-dialog/success-dialog.component';
+
 import {
   FormControl,
   FormGroup,
@@ -35,6 +37,7 @@ export class LoginAuthComponent implements OnInit {
     return this.form.controls[controlName].hasError(errorName);
   };
 
+  // Methods
   forgetpass() {
     this.router.navigateByUrl('forgetpass');
   }
@@ -47,7 +50,7 @@ export class LoginAuthComponent implements OnInit {
       this.service.getUserInfo(fdata.username).subscribe(
         (userdata) => {
           sessionStorage.setItem('user', JSON.stringify(userdata));
-         // console.log(sessionStorage.getItem('token'));
+          // console.log(sessionStorage.getItem('token'));
           this.router.navigateByUrl('home');
         },
         (error) => {
@@ -58,7 +61,6 @@ export class LoginAuthComponent implements OnInit {
           throw error; //You can also throw the error to a global error handler
         }
       );
-      
     });
   }
 
@@ -83,4 +85,11 @@ export class LoginAuthComponent implements OnInit {
       this.router.navigateByUrl('home');
     }
   }
+
+  dialogConfig = {
+    height: '200px',
+    width: '400px',
+    disableClose: true,
+    data: {},
+  };
 }
