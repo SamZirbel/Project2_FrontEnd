@@ -37,6 +37,27 @@ export class ApiService {
     return new Observable<any>();
 
   }
+  overrideNull(): string {
+    if (sessionStorage.getItem('token') === null) return '';
+    return sessionStorage.getItem('token') as any;
+  }
+
+  httpOptions = {
+    headers: new HttpHeaders({
+     
+      
+      
+      'Access-Control-Allow-Credentials': 'true'
+    }),
+  };
+  getAllMovies(data:string): Observable<ImdbMultiData[]>{
+   
+    return this.httpclient.get<ImdbMultiData[]>("http://www.omdbapi.com/?s="+ data +this.apiKeyTag+ this.apiKey) as  Observable<ImdbMultiData[]>
+  }
+  getSeriesMovies(id:any): Observable<ImdbMultiData[]>{
+   
+    return this.httpclient.get<ImdbMultiData[]>("http://www.omdbapi.com/?i="+ id +this.apiKeyTag+ this.apiKey) as  Observable<ImdbMultiData[]>
+  }
 
 /*
   public queryAPI(title : String) : Observable<Array<Array<Movie>>> {
