@@ -17,14 +17,14 @@ import { Title } from '@angular/platform-browser';
 })
 export class MovieInfoComponent implements OnInit {
 
-  @Input() movie : Movie = new Movie("", "", "", "", "");
+  @Input() movie : Movie = new Movie("", "", "", "", "", "");
   movieTitle:any[]=[];//this.movie.title;
 
   public titles : Array<String> = [];
-  public releases : Array<String> = [];
-  public synopsi : Array<String> = [];
-  public genres : Array<String> = [];
-  public directors : Array<String> = [];
+  // public releases : Array<String> = [];
+  // public synopsi : Array<String> = [];
+  // public genres : Array<String> = [];
+  // public directors : Array<String> = [];
 
   public movies : Array<Movie> = [];
 
@@ -64,7 +64,7 @@ export class MovieInfoComponent implements OnInit {
 
         if (item.Plot != "N/A" && item.Genre != "N/A") {
 
-          this.movies.push(new Movie(item.Title, item.Released,
+          this.movies.push(new Movie(item.imdbID, item.Title, item.Released,
             item.Plot, item.Genre, item.Director));
 
         }

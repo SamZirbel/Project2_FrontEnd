@@ -34,6 +34,7 @@ import {AppHttpInterceptor} from './user-auth/services/app-http-interceptor'
 import  {GlobalErrorHandlerService} from './global-error-handler-service';
 import { SuccessDialogComponent } from './shared/dialogs/success-dialog/success-dialog.component';
 import { ErrorDialogComponent } from './shared/dialogs/error-dialog/error-dialog.component';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +44,8 @@ import { ErrorDialogComponent } from './shared/dialogs/error-dialog/error-dialog
     NavBarComponent,
     SuccessDialogComponent,
     ErrorDialogComponent,
-    MovieInfoComponent
+    MovieInfoComponent,
+    MovieDetailsComponent
    ],
   imports: [
     BrowserModule,

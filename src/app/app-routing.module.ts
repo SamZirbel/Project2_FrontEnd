@@ -10,6 +10,8 @@ import { ResetPassComponent } from './user-auth/reset-pass/reset-pass.component'
 import { SignupComponent } from './user-auth/signup/signup.component';
 
 import { SearchbarComponent } from './searchbar/searchbar.component';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
+
 
 const routes: Routes = [
   {
@@ -42,6 +44,10 @@ const routes: Routes = [
   {
     path: '**',
     component: NoPageComponent,
+  },
+  {
+    path: 'movie/:id',
+    component: MovieDetailsComponent,
   }
 ];
 
