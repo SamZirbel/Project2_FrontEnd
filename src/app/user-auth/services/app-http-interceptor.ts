@@ -16,7 +16,7 @@ export class AppHttpInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
        
         if (!req.headers.has('Authorization')) {
-            console.log('header not working')
+            //console.log('header not working')
            // req = req.clone({ headers: req.headers.set('Authorization', this.overrideNull()) });
         }
        
