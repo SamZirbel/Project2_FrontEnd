@@ -23,6 +23,7 @@ import {AngularMaterialModule} from './angular-material/angular-material.module'
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { MovieInfoComponent } from './movie-info/movie-info.component';
+import { ReviewsComponent } from './reviews/reviews.component';
 
  
 
@@ -43,7 +44,8 @@ import { ErrorDialogComponent } from './shared/dialogs/error-dialog/error-dialog
     NavBarComponent,
     SuccessDialogComponent,
     ErrorDialogComponent,
-    MovieInfoComponent
+    MovieInfoComponent,
+    ReviewsComponent
    ],
   imports: [
     BrowserModule,
