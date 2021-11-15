@@ -39,16 +39,17 @@ const routes: Routes = [
     component: ResetPassComponent,
   },
   {
+    path: 'home/movie/:id',
+    component: MovieDetailsComponent,
+  },
+  {
     path: '', pathMatch: 'full', redirectTo: 'login'
   },
   {
     path: '**',
     component: NoPageComponent,
   },
-  {
-    path: 'movie/:id',
-    component: MovieDetailsComponent,
-  }
+  
 ];
 
 @NgModule({

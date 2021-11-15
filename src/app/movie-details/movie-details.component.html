@@ -1,1 +1,34 @@
 <p>movie-details works!</p>
+
+<table class="table table-striped table-light table-hover
+      table-sm"
+    id="movieList">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col"> Title </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        
+        <td>{{movieData?.Title}}</td>
+        
+      </tr>
+    </tbody>
+  </table>
+<div id = "Movie Information">
+
+<button mat-fab color="warn" aria-label="favorite icon">
+          <mat-icon>favorite</mat-icon>
+</button>
+
+
+<p>
+  The Movie Title Is : {{movieData?.Title}}
+</p>
+<ul *ngFor = "let t of movieData?.Ratings">
+<li>
+  {{t.Source}} : {{t.Value}}
+</li>
+</ul>
+</div>
