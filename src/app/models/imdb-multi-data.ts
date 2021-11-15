@@ -1,13 +1,13 @@
 export class ImdbMultiData {
 
-  public imdbID : string;
-  public Title : string;
-  public Type : string;
-  public Year : string;
-  public Poster : string;
+  public imdbID : String;
+  public Title : String;
+  public Type : String;
+  public Year : String;
+  public Poster : String;
 
-  constructor (imdbID : string, Title : string, Type : string, 
-    Year : string, Poster : string) {
+  constructor (imdbID : String, Title : String, Type : String, 
+    Year : String, Poster : String) {
 
     this.imdbID = imdbID;
     this.Title = Title;

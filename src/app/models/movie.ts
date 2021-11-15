@@ -1,13 +1,13 @@
 export class Movie {
 
-  public title : string;  // << Title On ?t= Api Query
-  public release : string; // << Released On ?t= API Query 
-  public synopsis : string; // << Plot On ?t= api Query
-  public genre : string; // << Genre On ?t= API Query
-  public director : string; // << Director On ?t= API Query
+  public title : String;  // << Title On ?t= Api Query
+  public release : String; // << Released On ?t= API Query 
+  public synopsis : String; // << Plot On ?t= api Query
+  public genre : String; // << Genre On ?t= API Query
+  public director : String; // << Director On ?t= API Query
 
-  constructor (title : string, release :string, synopsis : string,
-    genre : string, director : string) {
+  constructor (title : String, release : String, synopsis : String,
+    genre : String, director : String) {
 
     this.title = title;
     this.release = release;

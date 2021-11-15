@@ -5,9 +5,6 @@ import { SearchbarComponent } from '../searchbar/searchbar.component';
 import { MovieInfoHolderService } from '../services/movie-info-holder.service';
 
 import { Movie } from '../models/movie';
-import { Observable } from 'rxjs';
-import { Title } from '@angular/platform-browser';
-
 
 
 @Component({
@@ -18,7 +15,7 @@ import { Title } from '@angular/platform-browser';
 export class MovieInfoComponent implements OnInit {
 
   @Input() movie : Movie = new Movie("", "", "", "", "");
-  movieTitle:any;//this.movie.title;
+  movieTitle = this.movie.title;
 
   public titles : Array<String> = [];
   public releases : Array<String> = [];
@@ -31,8 +28,7 @@ export class MovieInfoComponent implements OnInit {
   constructor(
     movieHolder : MovieInfoHolderService,
     //searchbar : SearchbarComponent,
-    renderer : Renderer2,
-    
+    renderer : Renderer2
   ) { }
     //fds:any;
     
@@ -60,6 +56,7 @@ export class MovieInfoComponent implements OnInit {
     }
 
   }
+
 
 
 
