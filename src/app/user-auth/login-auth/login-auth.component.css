@@ -121,3 +121,10 @@ body {
 .example-full-width {
   width: 100%;
 }
+
+mat-form-field{
+  width: 400px;
+}
+mat-card-title{
+  text-align: center;
+}

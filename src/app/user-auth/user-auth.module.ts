@@ -8,11 +8,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {AngularMaterialModule} from '../angular-material/angular-material.module';
 import { NgModule,NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import {FormsModule } from '@angular/forms/';
+import {FormsModule, ReactiveFormsModule } from '@angular/forms/';
 import { ResetPassComponent } from './reset-pass/reset-pass.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
-
-
 
 @NgModule({
   declarations: [
@@ -29,6 +27,8 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     FlexLayoutModule,
     AngularMaterialModule,
     FormsModule,
+    ReactiveFormsModule,
+  
   ],
   exports: [
     LoginAuthComponent,

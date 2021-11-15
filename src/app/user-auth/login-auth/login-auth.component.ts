@@ -3,6 +3,15 @@ import { Component, OnInit } from '@angular/core';
 import { LoginInfo } from '../models/login-info';
 import { UserServiceService } from '../services/user-service.service';
 import { Router } from '@angular/router';
+import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
+import {
+  FormControl,
+  FormGroup,
+  Validators,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-login-auth',
@@ -12,19 +21,44 @@ import { Router } from '@angular/router';
 export class LoginAuthComponent implements OnInit {
   constructor(private service: UserServiceService, private router: Router) {}
 
+  public form = new FormGroup({
+    username: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(20),
+    ]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(20),
+    ]),
+  });
+  public hasError = (controlName: string, errorName: string) => {
+    return this.form.controls[controlName].hasError(errorName);
+  };
+
   forgetpass() {
     this.router.navigateByUrl('forgetpass');
   }
 
+  errorMsg: string = '';
   doLogin(fdata: LoginInfo) {
     // console.log(fdata.username);
     this.service.generateToken(fdata).subscribe((data) => {
-      sessionStorage.setItem('token', data);
-      this.service.getUserInfo(fdata.username).subscribe((userdata) => {
-        sessionStorage.setItem('user', JSON.stringify(userdata));
-        console.log(userdata);
-      });
-      this.router.navigateByUrl('home');
+      sessionStorage.setItem('token', 'Bearer ' + data);
+      this.service.getUserInfo(fdata.username).subscribe(
+        (userdata) => {
+          sessionStorage.setItem('user', JSON.stringify(userdata));
+         // console.log(sessionStorage.getItem('token'));
+          this.router.navigateByUrl('home');
+        },
+        (error) => {
+          //Error callback
+          console.error('error caught in login component');
+          console.error(error);
+
+          throw error; //You can also throw the error to a global error handler
+        }
+      );
+      
     });
   }
 

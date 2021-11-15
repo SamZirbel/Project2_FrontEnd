@@ -15,6 +15,12 @@ export class SignupComponent implements OnInit {
   signup(register:SignupInfo){
     this.service.signup(register).subscribe((data) => {
       this.router.navigateByUrl('login'); 
+    },
+    (error) => {                              //Error callback
+      console.error('error caught in sign up component')
+     console.error(error);
+
+      //throw error;   //You can also throw the error to a global error handler
     });
   }
 

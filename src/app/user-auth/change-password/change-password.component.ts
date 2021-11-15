@@ -21,6 +21,12 @@ export class ChangePasswordComponent implements OnInit {
     newpass.username=jsonobj.username;
     this.service.geUpdatePass(jsonobj.userId, newpass).subscribe((pdata) => {
         console.warn(pdata);
+    },
+    (error) => {                              //Error callback
+      console.error('error caught in change password component')
+     console.error(error);
+
+      //throw error;   //You can also throw the error to a global error handler
     });
   }
   ngOnInit(): void {
