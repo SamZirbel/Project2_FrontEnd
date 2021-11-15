@@ -37,8 +37,6 @@ export class MovieInfoComponent implements OnInit {
 
   ngOnInit(): void {
     
-    console.log(this.titles.length);
-
     this.titles.length = 0;
 
 
@@ -58,11 +56,11 @@ export class MovieInfoComponent implements OnInit {
   }
 
 
-
+  public fd2 : any;
 
   public fds : any = sessionStorage.getItem('result');
   
-  public fd2 : any;
+
 
   //ngDoCheck(){
 
@@ -77,8 +75,6 @@ export class MovieInfoComponent implements OnInit {
     this.titles.length = 0;
 
   }
-
-  public lastSize : number = 0;
 
   ngAfterViewChecked() {
 
@@ -96,22 +92,7 @@ export class MovieInfoComponent implements OnInit {
     const result=JSON.parse(this.fds);
     console.log(result.Title);
 
-    let lengthStor : typeof sessionStorage;
-    
-    // if (result.length == this.lastSize) {
-
-    //   this.titles.length = 0;
-
-    // }
-
-    // this.lastSize = result.length;
-
-    if (!result) {
-      console.error("WOOOOH");
-    }
-
     console.error(sessionStorage.getItem('result')?.length);
-    console.error();
 
     if (result.length == 0) { this.titles.length = 0; }
 
@@ -145,7 +126,7 @@ export class MovieInfoComponent implements OnInit {
 
     }
    
-    //this.ngOnInit();
+    
 
 
   } // << End Of ngAfterViewChecked

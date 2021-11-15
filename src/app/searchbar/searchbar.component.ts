@@ -9,7 +9,6 @@ import { DateFormaterService } from '../services/date-formater.service';
 import { ApiService } from '../services/api.service';
 import { MovieInfoHolderService } from '../services/movie-info-holder.service';
 import { ImdbMultiData } from '../models/imdb-multi-data';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-searchbar',
@@ -36,16 +35,9 @@ export class SearchbarComponent implements OnInit {
     this.apiServicer.getSeriesMovies(Object(res).Search[i].imdbID).subscribe(res2=>{
       //console.log(res2 )
       sessionStorage.setItem("result", JSON.stringify(res2));
-      //sessionStorage.setItem("flag", "flag String");
     })
-    } // << End FOr Loop
-
-  }) // << End Of API First Subscription
-
-    console.error("Something");
-    this.router.navigateByUrl('Something Wrong');
-    this.router.navigateByUrl('home');
-
+  }
+  })
   }
 
 
@@ -55,8 +47,7 @@ export class SearchbarComponent implements OnInit {
     private hider : HideComponentService,
     private dateFromatter : DateFormaterService,
     private apiServicer : ApiService,
-    private movieInfoHoler : MovieInfoHolderService,
-    private router : Router
+    private movieInfoHoler : MovieInfoHolderService
   ) { }
 
   ngOnInit(): void {
