@@ -1,0 +1,41 @@
+#SearchMovieForm {
+
+  margin-left : 3%;
+  margin-right : 3%;
+
+}
+
+#SearchMovieLabel {
+
+  font-size : 20px;
+  padding-right : 1%;
+
+}
+
+#SearchMovieInput {
+
+  padding-right : 1%;
+
+}
+/*
+#SearchFieldInstruction {
+  padding-left : 20%;
+}
+*/
+
+#SearchMovieButton {
+
+  margin-left : 1%;
+
+}
+
+#FormBottomBorder {
+
+  margin-left : 2%;
+  margin-right : 2%;
+
+  padding-bottom : 18px;
+  border-bottom : double;
+  border-width : 5px;
+
+}
