@@ -8,7 +8,46 @@
     white-space: nowrap;
     justify-content: space-between;
 }
-.log{
+.log {
     margin-right:8px;
     line-height: 30px;
 }
+<<<<<<< HEAD
+=======
+.mat-flat-button.mat-primary, .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary {
+    background-color: #40276c;
+}
+.navbutton {
+    margin-right: 8px;
+}
+.inline {
+    float: left;
+    display: inline;
+    margin-right: 8px;
+}
+.home {
+    margin-top: 5px;
+}
+.icon {
+    margin-top: 3px;
+}
+.home:link {
+    text-decoration: none;
+    color: white;
+}
+
+.home:visited {
+    text-decoration: none;
+    color: white;
+}
+
+.home:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.home:active {
+    text-decoration: none;
+    color: white;
+}
+>>>>>>> nav2
