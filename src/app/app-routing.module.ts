@@ -9,6 +9,8 @@ import { LoginAuthComponent } from './user-auth/login-auth/login-auth.component'
 import { ResetPassComponent } from './user-auth/reset-pass/reset-pass.component';
 import { SignupComponent } from './user-auth/signup/signup.component';
 
+import { SearchbarComponent } from './searchbar/searchbar.component';
+
 const routes: Routes = [
   {
     path: 'home',

@@ -1,10 +1,10 @@
 export class Movie {
 
-  public title : String;
-  public release : String;
-  public synopsis : String;
-  public genre : String;
-  public director : String;
+  public title : String;  // << Title On ?t= Api Query
+  public release : String; // << Released On ?t= API Query 
+  public synopsis : String; // << Plot On ?t= api Query
+  public genre : String; // << Genre On ?t= API Query
+  public director : String; // << Director On ?t= API Query
 
   constructor (title : String, release : String, synopsis : String,
     genre : String, director : String) {

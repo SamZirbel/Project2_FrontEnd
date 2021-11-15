@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Movie } from '../models/movie';
@@ -7,7 +7,6 @@ import { MovieToBackendService } from '../services/movie-to-backend.service';
 import { HideComponentService } from '../services/hide-component.service';
 import { DateFormaterService } from '../services/date-formater.service';
 import { ApiService } from '../services/api.service';
-import { MovieInfoHolderService } from '../services/movie-info-holder.service';
 
 @Component({
   selector: 'app-searchbar',
@@ -22,7 +21,7 @@ export class SearchbarComponent implements OnInit {
   // VV API QUery URL Constant Variables
   // VV ==================================
   private readonly url : String = "http://www.omdbapi.com/";
-  private readonly titleQuery : String = "?t=";
+  private readonly titleQuery : String = "?s=";
   private readonly apiKeyTag : String = "&apikey=";
   // VV Unique Per Account - It Is 1000 / Day
   private readonly apiKey : String = "a0e606bd";
@@ -48,17 +47,14 @@ export class SearchbarComponent implements OnInit {
     genre : String, release : String, synopsis : String
   };
 
-  private resultMovie : Movie = new Movie("", "", "", "", "");
 
-  @Output() outputMovie = new EventEmitter();//<Movie>();
 
   constructor( 
     private renderer : Renderer2,
     private movieToBackend : MovieToBackendService,
     private hider : HideComponentService,
     private dateFromatter : DateFormaterService,
-    private apiServicer : ApiService,
-    private movieInfoHoler : MovieInfoHolderService
+    private apiServicer : ApiService
   ) { }
 
 
@@ -71,26 +67,12 @@ export class SearchbarComponent implements OnInit {
 
     //this.renderer.setStyle(document.querySelector('app-searchbar'), 'display', "flex");
 
-    //this.renderer.setStyle(this.searchDiv, 'display', "flex");
-    //this.renderer.setStyle(this.searchDiv, 'margin', "2px");
-    this.renderer.setAttribute(this.searchDiv, 'id', "searchdiv");
+    this.renderer.setStyle(this.searchDiv, 'display', "flex");
+    this.renderer.setStyle(this.searchDiv, 'margin', "2px");
 
 
     this.renderer.setStyle(this.searchDiv, 'border', "solid");
-    this.renderer.setStyle(this.searchDiv, 'background-color', "rgb(200, 200, 255");
-    //this.renderer.setStyle(this.heading1, 'margin', "10px, 13px");
-
-    this.renderer.setStyle(this.searchDiv, 'margin-left', "2%");
-    this.renderer.setStyle(this.searchDiv, 'margin-right', "2%");
-    this.renderer.setStyle(this.searchDiv, 'margin-bottom', "8px");
-    this.renderer.setStyle(this.searchDiv, 'padding-left', "3%");
-    this.renderer.setStyle(this.searchDiv, 'padding-right', "3%");
-    this.renderer.setStyle(this.searchDiv, 'padding-top', "8px");
-    this.renderer.setStyle(this.searchDiv, 'padding-bottom', "15px");
-
-    
-    this.renderer.setStyle(this.label1, 'color', "black");
-    this.renderer.setStyle(this.heading1, 'color', "black");
+    this.renderer.setStyle(this.searchDiv, 'background-color', "red");
 
     this.heading1.innerText = "Search Bar!!";
     this.renderer.appendChild(this.searchDiv, this.heading1);
@@ -104,21 +86,14 @@ export class SearchbarComponent implements OnInit {
     this.renderer.setAttribute(this.input1, 'type', "text");
     this.renderer.setAttribute(this.input1, 'id', "searchEntry");
     this.renderer.setAttribute(this.input1, 'name', "searchEntry");
-    this.renderer.setStyle(this.input1, 'width', "80%");
     this.renderer.appendChild(this.form1, this.input1);
-
-
 
     this.button2.innerText = "  Search Movie  ";
     this.renderer.listen(this.button2, 'click', () => {
       this.getInputString(this.input1);
       this.queryAPI();
-      this.sendMovie(this.resultMovie);
-
     });
     this.renderer.appendChild(this.searchDiv, this.button2);
-
-
 
     this.button1.innerText = "Hide Search Bar";
     this.renderer.listen(this.button1, 'click', () => {
@@ -175,6 +150,51 @@ export class SearchbarComponent implements OnInit {
     
     console.log("API Query : " + apiquery);
 
+/*
+    let result = this.apiServicer.queryAPI(this.inputString);
+
+    console.log("JRIOJROIJIORJIOJRO Rexult VV " );
+    console.log(result);
+*/
+
+    /*
+    this.apiServicer.queryResults(this.inputString).subscribe(
+      data => {
+        //let result : any = 
+        console.log("===== The Response : ");
+        console.log(data);
+      }
+    )
+*/
+
+    /*
+    this.apiServicer.queryTitle(this.inputString).subscribe(
+      data => {
+        //let result : any = 
+        console.log("===== The Response : ");
+        console.log(data);
+      }
+    )
+    */
+    /*
+    this.apiServicer.queryAPI(apiquery).subscribe(
+      data => {
+        //let result : any = 
+        console.log("===== The Response : ");
+        console.log(data);
+      }
+    )
+    */
+
+/*
+    this.movieToBackend.generateToken(queryMovie).subscribe(
+      data => {
+        let tokenized : any = sessionStorage.setItem("token", data.toString());
+        console.log(data);
+      }
+    )
+*/
+
     //let data : Movie = new Movie("", "", "", "", "");
 
     let response = await fetch(apiquery.toString());
@@ -182,7 +202,6 @@ export class SearchbarComponent implements OnInit {
     let data = await response.json();
 
     console.log("Response Data : " + data);
-    console.log(data);
 
     console.log("Title : " + Object(data).Title);
     console.log("Released : " + Object(data).Released);
@@ -235,39 +254,16 @@ export class SearchbarComponent implements OnInit {
 
     //this.movieToBackend.addMovie(queryMovie);
 
-
-    this.movieInfoHoler.setMovie(queryMovie);
-    this.movieInfoHoler.getMovie();
-
-    this.resultMovie = queryMovie;
     
-    this.sendMovie(queryMovie);
 
-/*
     this.movieToBackend.generateToken(queryMovie).subscribe(
       data => {
         let tokenized : any = sessionStorage.setItem("token", data.toString());
         console.log(data);
       }
     )
-*/
 
     
-
-  }
-
-  // VV Declaration
-  //@Output() outputMovie = new EventEmitter<Movie>();
-
-
-  sendMovie(movie : Movie) {
-
-    console.log("\n\n\n");
-    console.error("Emitting Movie");
-    console.error(movie);
-
-    this.outputMovie.emit(movie);
-    console.error(this.outputMovie.emit(movie));
 
   }
 
