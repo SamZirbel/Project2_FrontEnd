@@ -18,12 +18,6 @@ export class MovieInfoComponent implements OnInit {
   movieTitle = this.movie.title;
 
   public titles : Array<String> = [];
-  public releases : Array<String> = [];
-  public synopsi : Array<String> = [];
-  public genres : Array<String> = [];
-  public directors : Array<String> = [];
-
-  public movies : Array<Movie> = [];
 
   constructor(
     movieHolder : MovieInfoHolderService,
@@ -78,8 +72,6 @@ export class MovieInfoComponent implements OnInit {
 
   ngAfterViewChecked() {
 
-    
-
     this.fd2=sessionStorage.getItem('flag');
     if (this.fd2 == "flag String") {
 
@@ -114,13 +106,6 @@ export class MovieInfoComponent implements OnInit {
     if (this.match == 0) {
 
       this.titles.push(result.Title);
-
-      this.movies.push(new Movie(result.Title, result.Released,
-        result.Plot, result.Genre, result.Director));
-      //this.releases.push(result.Released);
-      //this.synopsi.push(result.Plot);
-      //this.genres.push(result.Genre);
-      //this.directors.push(result.Director);
 
       console.log(this.titles);
 
