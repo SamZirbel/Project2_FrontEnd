@@ -11,7 +11,7 @@ export class MovieInfoHolderService {
 
   constructor() {
 
-    this.storedMovie = new Movie("", "", "", "", "");
+    this.storedMovie = new Movie("", "", "", "", "", "");
 
   }
 

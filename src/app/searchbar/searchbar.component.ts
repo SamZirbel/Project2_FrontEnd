@@ -25,6 +25,7 @@ export class SearchbarComponent implements OnInit {
   rest:any[]=[];
   dosomething(sea:any){
 
+
     if (!(sessionStorage.getItem('result') == null)) { 
       sessionStorage.removeItem('result');
     }
@@ -50,18 +51,20 @@ export class SearchbarComponent implements OnInit {
   }) // << End Of API First Subscription
 
 
-    // this.apiServicer.getAllMovies(sea.seah).pipe(
-    //   switchMap( (res :any) this.
-
-    // this.queryResults(title).pipe(
-    //   switchMap( (movieData : any) this.queryID().pipe(
-    //       map( (movies : any) => ({movies, movieData}) )
-    //     ))
-    //   )
-
    this.ngOnInit();
 
   }
+
+
+  public submitButton : HTMLElement | null= document.getElementById("SearchMovieButton");
+
+  
+
+ // this.button2.innerText = "  Search Movie  ";
+//     this.renderer.listen(this.button2, 'click', () => {
+//       this.getInputString(this.input1);
+//       this.queryAPI();
+//     });
 
 
   constructor( 
@@ -76,6 +79,41 @@ export class SearchbarComponent implements OnInit {
 
   ngOnInit(): void {
 
+
+
+  //   this.renderer.listen(this.submitButton, 'click', (sea) => {
+
+  //     //let sea = Object(document.getElementById('SearchMovieInput')).value;
+
+      
+
+  //   if (!(sessionStorage.getItem('result') == null)) { 
+  //     sessionStorage.removeItem('result');
+  //   }
+ 
+
+
+
+  // this.apiServicer.getAllMovies(sea.seah).subscribe(res=>{
+  //   for(let i:any=0; i<Object(res).Search.length; i++){ 
+  //     this.rest.length=0;
+  //   this.apiServicer.getSeriesMovies(Object(res).Search[i].imdbID).subscribe(res2=>{
+      
+  //     this.rest.push(res2)
+      
+  //     if((Object(res).Search.length-1)==i){
+  //       console.log(this.rest)
+  //       sessionStorage.setItem("result", JSON.stringify(this.rest));
+  //     }
+  //   })
+   
+  //   } // << End FOr Loop
+
+  // }) // << End Of API First Subscription
+
+
+
+  // });
 
   }
 

@@ -21,7 +21,7 @@
       <tr *ngFor="let t of movies">
         <th scope="row" id = "homeMovieTitleColumn">
           <a
-          routerLink="login"
+          routerLink="movie/{{t.id}}"
           routerLinkActive="active"
           >{{t.title}}</a>
         </th>
