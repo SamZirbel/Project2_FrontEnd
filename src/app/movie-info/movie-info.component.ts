@@ -5,6 +5,9 @@ import { SearchbarComponent } from '../searchbar/searchbar.component';
 import { MovieInfoHolderService } from '../services/movie-info-holder.service';
 
 import { Movie } from '../models/movie';
+import { Observable } from 'rxjs';
+import { Title } from '@angular/platform-browser';
+
 
 
 @Component({
@@ -15,14 +18,21 @@ import { Movie } from '../models/movie';
 export class MovieInfoComponent implements OnInit {
 
   @Input() movie : Movie = new Movie("", "", "", "", "");
-  movieTitle = this.movie.title;
+  movieTitle:any;//this.movie.title;
 
   public titles : Array<String> = [];
+  public releases : Array<String> = [];
+  public synopsi : Array<String> = [];
+  public genres : Array<String> = [];
+  public directors : Array<String> = [];
+
+  public movies : Array<Movie> = [];
 
   constructor(
     movieHolder : MovieInfoHolderService,
     //searchbar : SearchbarComponent,
-    renderer : Renderer2
+    renderer : Renderer2,
+    
   ) { }
     //fds:any;
     
@@ -31,6 +41,8 @@ export class MovieInfoComponent implements OnInit {
 
   ngOnInit(): void {
     
+    console.log(this.titles.length);
+
     this.titles.length = 0;
 
 
@@ -50,11 +62,10 @@ export class MovieInfoComponent implements OnInit {
   }
 
 
-  public fd2 : any;
 
   public fds : any = sessionStorage.getItem('result');
   
-
+  public fd2 : any;
 
   //ngDoCheck(){
 
@@ -70,7 +81,11 @@ export class MovieInfoComponent implements OnInit {
 
   }
 
+  public lastSize : number = 0;
+
   ngAfterViewChecked() {
+
+    
 
     this.fd2=sessionStorage.getItem('flag');
     if (this.fd2 == "flag String") {
@@ -84,7 +99,22 @@ export class MovieInfoComponent implements OnInit {
     const result=JSON.parse(this.fds);
     console.log(result.Title);
 
+    let lengthStor : typeof sessionStorage;
+    
+    // if (result.length == this.lastSize) {
+
+    //   this.titles.length = 0;
+
+    // }
+
+    // this.lastSize = result.length;
+
+    if (!result) {
+      console.error("WOOOOH");
+    }
+
     console.error(sessionStorage.getItem('result')?.length);
+    console.error();
 
     if (result.length == 0) { this.titles.length = 0; }
 
@@ -107,11 +137,18 @@ export class MovieInfoComponent implements OnInit {
 
       this.titles.push(result.Title);
 
+      this.movies.push(new Movie(result.Title, result.Released,
+        result.Plot, result.Genre, result.Director));
+      //this.releases.push(result.Released);
+      //this.synopsi.push(result.Plot);
+      //this.genres.push(result.Genre);
+      //this.directors.push(result.Director);
+
       console.log(this.titles);
 
     }
    
-    
+    //this.ngOnInit();
 
 
   } // << End Of ngAfterViewChecked
