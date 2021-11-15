@@ -1,12 +1,12 @@
 export class Movie {
 
   public title : String;
-  public release : String;
+  public release : Date;
   public synopsis : String;
   public genre : String;
   public director : String;
 
-  constructor (title : String, release : String, synopsis : String,
+  constructor (title : String, release : Date, synopsis : String,
     genre : String, director : String) {
 
     this.title = title;
