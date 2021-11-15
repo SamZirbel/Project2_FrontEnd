@@ -12,8 +12,6 @@
     margin-right:8px;
     line-height: 30px;
 }
-<<<<<<< HEAD
-=======
 .mat-flat-button.mat-primary, .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary {
     background-color: #40276c;
 }
@@ -50,4 +48,3 @@
     text-decoration: none;
     color: white;
 }
->>>>>>> nav2
