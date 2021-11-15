@@ -4,13 +4,23 @@ import { LoginInfo } from '../models/login-info';
 import { UserServiceService } from '../services/user-service.service';
 import {Router} from '@angular/router';
 
+import { SearchbarComponent } from '../../searchbar/searchbar.component';
+
+
 @Component({
   selector: 'app-login-auth',
   templateUrl: './login-auth.component.html',
   styleUrls: ['./login-auth.component.css'],
 })
 export class LoginAuthComponent implements OnInit {
-  constructor(private service : UserServiceService, private router: Router) {}
+  
+
+  constructor(
+      private service : UserServiceService, 
+      private router: Router
+  ) {}
+  
+
   tokenized:any;
   
   forgetpass(){
@@ -28,7 +38,6 @@ export class LoginAuthComponent implements OnInit {
 
     )
   }
- 
  
  
   // //is remember me ...................................

@@ -23,6 +23,7 @@ import { HomeComponent } from './home/home.component';
 
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
+import { MovieInfoComponent } from './movie-info/movie-info.component';
 
 
 
@@ -32,7 +33,8 @@ import { SearchbarComponent } from './searchbar/searchbar.component';
     NoPageComponent,
     HomeComponent,
     SearchbarComponent,
-    NavBarComponent
+    NavBarComponent,
+    MovieInfoComponent
    ],
   imports: [
     BrowserModule,
