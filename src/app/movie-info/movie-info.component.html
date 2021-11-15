@@ -4,8 +4,20 @@
   Movie info
 </h1>
 
-<p>
+<p id = "TitleText">
   This Is Text {{movieTitle}}
-
-
 </p>
+
+<table class="Movie List">
+  <thead>
+    <tr>
+      <th scope="col"> Title </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let t of titles">
+      <td>{{t}}</td>
+    </tr>
+  </tbody>
+</table>
+

@@ -20,41 +20,104 @@ export class MovieInfoComponent implements OnInit {
   @Input() movie : Movie = new Movie("", "", "", "", "");
   movieTitle:any;//this.movie.title;
 
+  public titles : Array<String> = [];
+
   constructor(
     movieHolder : MovieInfoHolderService,
     //searchbar : SearchbarComponent,
     renderer : Renderer2,
     
   ) { }
-    fds:any;
-    
+    //fds:any;
     
     
    
 
   ngOnInit(): void {
     
+    this.titles.length = 0;
+
 
   }
 
-  ngDoCheck(){
+  getfrom(fds : any) {
+
+    const result = JSON.parse(this.fds);
+
+    if (result) {
+
+    console.log(result.Title);
+    this.titles.push(result.Title);
+
+    }
+
+  }
+
+
+
+  public fds : any = sessionStorage.getItem('result');
+  
+
+
+  //ngDoCheck(){
+
+  public readFlag : number = 0;
+
+  public activeCompare : String = "";
+
+  public match : number = 0;
+
+  ngOnChange() {
+
+    this.titles.length = 0;
+
+  }
+
+  ngAfterViewChecked() {
+
     this.fds=sessionStorage.getItem('result');
     const result=JSON.parse(this.fds);
-    //console.log(result);
+    console.log(result.Title);
 
-    for (let i:any=0; i<3; i++){
-      console.log(result[i].Title)
+    console.error(sessionStorage.getItem('result')?.length);
+
+    if (result.length == 0) { this.titles.length = 0; }
+
+    this.match = 0;
+
+    for (let i = 0; i < this.titles.length; ++ i) {
+
+      this.activeCompare = this.titles[i];
+
+      if (this.activeCompare == result.Title) {
+
+        //console.error("Match");
+        this.match = 1;
+
+      }
+
     }
-  //   for (let item of result) {
-  //     console.log(item);
-  //     // for (let title of item.Title) {
-  //     //   console.log(title);
-  //   //} 
-  // } 
+
+    if (this.match == 0) {
+
+      this.titles.push(result.Title);
+
+      console.log(this.titles);
+
+    }
    
     
- 
-   
+
+
+  } // << End Of ngAfterViewChecked
+
+  ngOnDestroy() {
+
+    
+    this.titles.length = 0;
+
   }
+
+
 
 }
