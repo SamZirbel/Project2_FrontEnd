@@ -12,11 +12,24 @@
   <thead>
     <tr>
       <th scope="col"> Title </th>
+      <th scope="col"> Release </th>
+      <th scope="col"> Plot </th>
+      <th scope="col"> Genre </th>
+      <th scope="col"> Director </th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let t of titles">
-      <td>{{t}}</td>
+    <tr *ngFor="let t of movies">
+      <td>
+        <a
+        routerLink="login"
+        routerLinkActive="active"
+        >{{t.title}}</a>
+      </td>
+      <td>{{t.release}}</td>
+      <td>{{t.synopsis}}</td>
+      <td>{{t.genre}}</td>
+      <td>{{t.director}}</td>
     </tr>
   </tbody>
 </table>
