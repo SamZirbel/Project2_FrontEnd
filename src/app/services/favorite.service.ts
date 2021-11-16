@@ -31,6 +31,17 @@ export class FavoriteService {
   }
 
   getMyFavorites(id:number) {
-    return this.httpclient.get<Favorite>(('http://localhost:8085/favorite/user/'+id))
+    return this.httpclient.get<Favorite>(('http://localhost:8085/favorite/user/'+id), this.httpOptions);
   }
+
+  getFavoriteByMovie(id:number) {
+    return this.httpclient.get<Favorite>(('http://localhost:8085/favorite/movie/'+id));
+  }
+  // deleteFavorite(uid : number, mid : string) {
+  //   console.log("called");
+  //   console.log(uid);
+  //   console.log(mid);
+  //   return this.httpclient.post<Favorite>(('http://localhost:8085/favorite/' + uid + '/' + mid), this.httpOptions);
+  //   // return this.httpclient.request("delete", 'http://localhost:8085/favorite/delete', {body: favorite});
+  // }
 }

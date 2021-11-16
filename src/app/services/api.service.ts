@@ -5,6 +5,7 @@ import { map, switchMap } from 'rxjs/operators';
 
 import { ImdbMultiData } from '../models/imdb-multi-data';
 import { Movie } from '../models/movie';
+import { AllMovieData } from '../models/all-movie-data';
 
 
 @Injectable({
@@ -57,6 +58,11 @@ export class ApiService {
   getSeriesMovies(id:any): Observable<ImdbMultiData[]>{
    
     return this.httpclient.get<ImdbMultiData[]>("http://www.omdbapi.com/?i="+ id +this.apiKeyTag+ this.apiKey) as  Observable<ImdbMultiData[]>
+  }
+
+  getSeriesMovieData(id:any): Observable<AllMovieData>{
+   
+    return this.httpclient.get<AllMovieData>("http://www.omdbapi.com/?i="+ id +this.apiKeyTag+ this.apiKey) as  Observable<AllMovieData>
   }
 
 /*
