@@ -1,4 +1,4 @@
-import * as internal from "stream";
+//import * as internal from "stream";
 import { Movie } from "./movie";
 
 export class Review {

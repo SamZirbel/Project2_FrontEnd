@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ImdbMultiData } from '../models/imdb-multi-data';
 import { AllMovieData } from '../models/all-movie-data';
-
+import {ReviewsComponent} from '../reviews/reviews.component'
 import { ApiService } from '../services/api.service';
 import { FavoriteService } from '../services/favorite.service';
 import { MovieToBackendService } from '../services/movie-to-backend.service';
