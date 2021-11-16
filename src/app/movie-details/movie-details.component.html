@@ -1,38 +1,111 @@
-<p>movie-details works!</p>
+
+<h1 style="margin-top: 20px; text-align: center"> {{movieData?.Title}} </h1>
 
 <table class="table table-striped table-light table-hover
-      table-sm"
+      table-sm" style = "width : 100%; margin-top: 20px;"
     id="movieList">
     <thead class="thead-light">
+      
       <tr>
-        <th scope="col"> Title </th>
+        <th scope = "col" class = "col-sm-4"> Poster </th>
+
+        <th scope="col" class = "col-sm-8">  Data </th>
       </tr>
     </thead>
     <tbody>
+
       <tr>
-        
-        <td>{{movieData?.Title}}</td>
-        
+        <td>
+        <img src={{movieData?.Poster}} style ="margin-left:10%;">
+        </td>
+        <td>
+          
+          <div>
+            <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+              <ngb-panel>
+                <ng-template ngbPanelHeader let-opened="opened">
+                  <div class="d-flex">
+                  
+                  <button mat-fab color="warn" aria-label="favorite icon" (click)="onFav()">
+                            <mat-icon>favorite</mat-icon>
+                  </button>
+
+                  <button style="margin-left: 5%; padding-top: 15px;"
+                    ngbPanelToggle class="btn"> {{movieData?.Title}} : Description </button>
+                  
+                  </div>
+                  <br>
+                  <ngb-rating [(rate)]="currentRate" style="margin-left : 20%"></ngb-rating>
+
+                </ng-template>
+                <ng-template ngbPanelContent>
+            <h3> Title : {{movieData?.Title}} </h3>
+            <p> Runtime : {{movieData?.Runtime}} </p>
+            <p> Released : {{movieData?.Released}} </p>
+            <p> Genre : {{movieData?.Genre}} </p>
+            <p> Plot : {{movieData?.Plot}} </p>
+                </ng-template>
+              </ngb-panel>
+              <ngb-panel title="{{movieData?.Title}} : Movie Details">
+                <ng-template ngbPanelContent>
+
+                  <p> Language : {{movieData?.Language}} </p>
+                  <p> Country : {{movieData?.Country}} </p>
+                  <div>
+                    <p> Outside Review Statistics </p>
+                    <ul *ngFor = "let t of movieData?.Ratings">
+                      <li>
+                        {{t.Source}} : {{t.Value}}
+                      </li>
+                    </ul>
+                  </div>
+                  
+                </ng-template>
+              </ngb-panel>
+              <ngb-panel title="{{movieData?.Title}} : Production Staff">
+                <ng-template ngbPanelContent>
+                  <p> Writer : {{movieData?.Writer}} </p>
+                  <p> Director : {{movieData?.Director}} </p>
+                  <p> Actors : {{movieData?.Director}} </p>
+                </ng-template>
+              </ngb-panel>
+            </ngb-accordion>
+    
+            <br>
+            
+            <br>
+            
+
+
+          </div>
+        </td>
       </tr>
+     
     </tbody>
   </table>
+
+
+<!--
 <div id = "Movie Information">
+
 
 <button mat-fab color="warn" aria-label="favorite icon" (click)="onFav()">
           <mat-icon>favorite</mat-icon>
 </button>
 
 
-<p>
-  The Movie Title Is : {{movieData?.Title}}
-</p>
-<ul *ngFor = "let t of movieData?.Ratings">
-<li>
-  {{t.Source}} : {{t.Value}}
-</li>
-</ul>
+
 </div>
+-->
+
+
 <ngb-rating [(rate)]="currentRate" ></ngb-rating>
 <hr>
 <pre>Rate: <b>{{currentRate}}</b></pre>
+
+<!--
+</div>
+--> 
+
+
 <app-reviews></app-reviews>
