@@ -7,6 +7,7 @@ import {Router} from '@angular/router';
 })
 export class NavBarComponent implements OnInit {
 
+  public currentUser = ''
   constructor(private router: Router) { }
    
   show:any;
@@ -28,7 +29,11 @@ export class NavBarComponent implements OnInit {
   ngAfterViewInit(): void {
     if(!(localStorage.getItem("token")==null))
     this.show=1;
-   
+    let user = sessionStorage.getItem('user');
+    if (user) {
+      user = JSON.parse(user);
+      this.currentUser = Object(user).username;
+    }
     
   }
   ngDoCheck(){
