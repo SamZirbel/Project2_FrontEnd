@@ -14,10 +14,22 @@ export class UserServiceService {
   URL = 'http://localhost:8085/';
   constructor(private http: HttpClient) {}
 
-  public generateToken(request: LoginInfo): Observable<string> {
-    return this.http.post<string>('http://localhost:8085/loginauth', request, {
-      responseType: 'text' as 'json',
-    }) .pipe(
+ 
+
+
+  public generateToken(request: LoginInfo) {
+    const headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': '*',
+      'Accept' : "*/*"
+     
+});
+    
+    return this.http.post('http://localhost:8085/loginauth', request,{
+      headers: headers,
+      responseType: 'text'
+  }) .pipe(
       catchError((err) => {
         console.log('error caught in service > generate Token method')
         console.error(err);
@@ -33,7 +45,7 @@ export class UserServiceService {
   httpOptions = {
     headers: new HttpHeaders({
       Authorization: this.overrideNull(),
-      responseType: 'text' as 'json',
+     
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': '*',
       'Content-Type': 'application/json',

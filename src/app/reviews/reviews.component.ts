@@ -43,8 +43,8 @@ private reviewService: ReviewToBackendService) { }
     this.reviews.forEach(review => {
       if(user.username == review.username){
         return true;
-      }
-      else return false
+      }else return false
+     
     });
     return false;
   }

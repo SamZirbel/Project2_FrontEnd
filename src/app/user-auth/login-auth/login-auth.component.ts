@@ -53,11 +53,12 @@ export class LoginAuthComponent implements OnInit {
     // console.log(fdata.username);
     this.service.generateToken(fdata).subscribe((data) => {
       localStorage.setItem('token', 'Bearer ' + data);
+      sessionStorage.setItem('token', 'Bearer ' + data);
       this.service.getUserInfo(fdata.username).subscribe(
         (userdata) => {
-          console.warn(userdata);
+         // console.warn(userdata);
           sessionStorage.setItem('user', JSON.stringify(userdata));
-           //console.log(localStorage.getItem('token'));
+           console.log(localStorage.getItem('token'));
           this.router.navigateByUrl('home');
         },
         (error) => {
