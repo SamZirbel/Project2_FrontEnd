@@ -1,4 +1,11 @@
 
+#DetailsTableHeader {
+
+  text-align : center;
+  font-weight : 300;
+
+}
+
 #DetailsPosterHolder {
 
   text-align : center;
@@ -14,6 +21,8 @@
   margin-right : 5%;
 
 }
+
+
 
 #DetailsAccordian1Title {
   
@@ -37,5 +46,11 @@
 
   font-size: 18px;
   color: rgb(200, 170, 100);
+
+}
+
+.mat-warn {
+    background-color: #ffffff;
+    color: #ff1515;
 
 }

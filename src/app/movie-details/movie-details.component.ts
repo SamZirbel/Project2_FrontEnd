@@ -34,23 +34,40 @@ export class MovieDetailsComponent implements OnInit {
 
   ngOnInit(): void {
 
-        console.log(this.router.snapshot.paramMap.get("id"));
-    this.buttonState = 0;
+    console.log(this.router.snapshot.paramMap.get("id"));
     this.apiServicer.getSeriesMovieData(this.router.snapshot.paramMap.get("id")).subscribe(
-      res2 => {
+    res2 => {
 
-        console.log(res2);
+      console.log(res2);
 
-        this.movieData = res2;
+      this.movieData = res2;
 
-        console.log(this.movieData);
+      console.log(this.movieData);
 
-        console.log(res2.Title);
-        
+      console.log(res2.Title);
       
-      
-    })
     
+    
+    })
+    let user = sessionStorage.getItem('user');
+    if (user) {
+      user = JSON.parse(user);
+    }
+    this.favoriteService.getMyFavorites(Object(user).userId).subscribe(
+      data => {
+        let tokenized : any = sessionStorage.setItem("token", data.toString());
+        console.log(data);
+        for (let item of Object(data)) {
+          if (item.movie.imdbId == this.router.snapshot.paramMap.get("id")) {
+            this.buttonState = 1;
+            let heart = <HTMLElement> document.getElementsByClassName('mat-warn')[0];
+            heart.style.backgroundColor = '#ff1515';
+            heart.style.color = '#ffffff';
+          }
+        }
+        // this.favorites = Object(data);
+      }
+    )
     
 
   }
@@ -59,7 +76,7 @@ export class MovieDetailsComponent implements OnInit {
   }
 
   public onFav() {
-    // if (this.buttonState == 1) {
+    if (this.buttonState == 0) {
       if (this.movieData != null) {
         let date = this.dateFormatter.formatDate(this.movieData.Released)
         let movie = new Movie(this.movieData?.imdbID, this.movieData?.Title, date, this.movieData?.Plot, this.movieData?.Genre, this.movieData?.Director);
@@ -89,7 +106,11 @@ export class MovieDetailsComponent implements OnInit {
         )
 
       }
-      this.buttonState = 0;
+      this.buttonState = 1;
+      let heart = <HTMLElement> document.getElementsByClassName('mat-warn')[0];
+      heart.style.backgroundColor = '#ff1515';
+      heart.style.color = '#ffffff';
+    }
     // } else {
     //   if (this.movieData != null) {
     //     let date = this.dateFormatter.formatDate(this.movieData.Released)

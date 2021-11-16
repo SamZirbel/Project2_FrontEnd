@@ -7,9 +7,9 @@
     <thead class="thead-light">
       
       <tr>
-        <th scope = "col" class = "col-sm-4"> Poster </th>
+        <th scope = "col" class = "col-sm-4" id="DetailsTableHeader"> Poster </th>
 
-        <th scope="col" class = "col-sm-8">  Data </th>
+        <th scope="col" class = "col-sm-8" id="DetailsTableHeader">  Data </th>
       </tr>
     </thead>
     <tbody>
@@ -58,7 +58,7 @@
             <p> Plot : {{movieData?.Plot}} </p>
                 </ng-template>
               </ngb-panel>
-              <ngb-panel title="{{movieData?.Title}} : Movie Reception">
+              <ngb-panel title="{{movieData?.Title}} : Movie Reception" id="DetailsAccordian2Holder">
                 <ng-template ngbPanelContent>
 
                   <p> Language : {{movieData?.Language}} </p>
@@ -116,9 +116,8 @@
 <hr>
 <pre>Rate: <b>{{currentRate}}</b></pre>
 
+
+<app-reviews></app-reviews>
 <!--
 </div>
 --> 
-
-
-<app-reviews></app-reviews>
