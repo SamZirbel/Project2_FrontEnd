@@ -31,7 +31,7 @@ export class FavoriteService {
   }
 
   getMyFavorites(id:number) {
-    return this.httpclient.get<Favorite>(('http://localhost:8085/favorite/user/'+id));
+    return this.httpclient.get<Favorite>(('http://localhost:8085/favorite/user/'+id), this.httpOptions);
   }
 
   getFavoriteByMovie(id:number) {

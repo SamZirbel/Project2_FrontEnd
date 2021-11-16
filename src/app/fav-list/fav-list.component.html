@@ -1,1 +1,33 @@
 <p>fav-list works!</p>
+<div id = "HomeMovieInfoHolder">
+
+    <h1 id = "HomeMovieInfoTitle">
+    Movie info
+    </h1>
+  
+    <table class="table table-striped table-light table-hover
+        table-sm"
+      id="movieList">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col"> Title </th>
+          <th scope="col"> Release </th>
+          <th scope="col"> Plot </th>
+          <th scope="col"> Genre </th>
+          <th scope="col"> Director </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let t of favorites">
+          <td scope="row" id = "homeMovieTitleColumn">
+            {{t.movie.title}}
+          </td>
+          <td>{{t.movie.release}}</td>
+          <td>{{t.movie.synopsis}}</td>
+          <td>{{t.movie.genre}}</td>
+          <td>{{t.movie.director}}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+  </div>

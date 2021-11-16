@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChange } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ImdbMultiData } from '../models/imdb-multi-data';
@@ -28,7 +28,7 @@ export class MovieDetailsComponent implements OnInit {
     public dateFormatter : DateFormaterService
   ) { }
 
-
+  public currentRate = 8;
   public buttonState : number = 0;
   public movieData :  AllMovieData | null = null;
 
@@ -53,6 +53,9 @@ export class MovieDetailsComponent implements OnInit {
     
     
 
+  }
+  ngOnChanges(changes: SimpleChange): void {
+    console.log(this.currentRate);
   }
 
   public onFav() {
