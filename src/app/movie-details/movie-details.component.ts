@@ -6,7 +6,7 @@ import { AllMovieData } from '../models/all-movie-data';
 import {ReviewsComponent} from '../reviews/reviews.component'
 import { ApiService } from '../services/api.service';
 import { FavoriteService } from '../services/favorite.service';
-import { MovieToBackendService } from '../services/movie-to-backend.service';
+//import { MovieToBackendService } from '../services/movie-to-backend.service';
 import { DateFormaterService } from '../services/date-formater.service';
 import { Movie } from '../models/movie';
 import { Favorite } from '../models/favorite';
@@ -24,7 +24,7 @@ export class MovieDetailsComponent implements OnInit {
     public router : ActivatedRoute,
     public apiServicer : ApiService,
     public favoriteService : FavoriteService,
-    public movietoBackend : MovieToBackendService,
+    //public movietoBackend : MovieToBackendService,
     public dateFormatter : DateFormaterService
   ) { }
 
