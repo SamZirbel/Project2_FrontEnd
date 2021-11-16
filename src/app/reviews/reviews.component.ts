@@ -1,7 +1,9 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Movie } from '../models/movie';
 import { Review } from '../models/review';
+import { ApiService } from '../services/api.service';
 //import { MovieToBackendService } from '../services/movie-to-backend.service';
 import { ReviewToBackendService } from '../services/review-to-backend.service';
 
@@ -15,10 +17,17 @@ export class ReviewsComponent implements OnInit {
   movie = new Movie("", "", "", "", "", "");;
   reviews : Array<Review> = [];
 
-  constructor(//private movieService: MovieToBackendService, 
-private reviewService: ReviewToBackendService) { }
+  constructor(//private movieService: MovieToBackendService,
+              private reviewService: ReviewToBackendService,
+              public router : ActivatedRoute,
+              public apiServicer : ApiService) { }
 
   ngOnInit(): void {
+
+    this.apiServicer.getSeriesMovieData(this.router.snapshot.paramMap.get("id")).subscribe(res2 => {
+      this.movie = new Movie(res2.imdbID, res2.Title, res2.Released, res2.Plot, res2.Genre, res2.Director);
+    });
+    this.populateReviews();
   }
 
   submitReview(fdata: {content: string, rating: number}){
@@ -41,12 +50,13 @@ private reviewService: ReviewToBackendService) { }
   userHasReview() : boolean{
     let u = sessionStorage.getItem('user');
     let user = JSON.parse(u ? u : 'oops');
+    let hasReview : boolean = false;
     this.reviews.forEach(review => {
-      if(user.username == review.username){
-        return true;
+      if(user.username === review.username){
+        hasReview = true;
       }
     });
-    return false;
+    return hasReview;
   }
 
 }
