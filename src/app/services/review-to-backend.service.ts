@@ -12,7 +12,6 @@ import { Review } from '../models/review'
 })
 export class ReviewToBackendService {
 
-  URL = "http://localhost:8085/";
   constructor(private http : HttpClient) { }
 
   httpOptions = {
@@ -23,12 +22,12 @@ export class ReviewToBackendService {
     })
   }
 
-  public getReviews(request:Movie):Observable<Review[]> {
-    return this.http.get<Review[]>(URL + "reviewsByMovie/" + request, {responseType:'text' as 'json'});
+  public getReviews(movieId:string):Observable<Review[]> {
+    return this.http.get<Review[]>("http://localhost:8085/review/reviewsByMovie/" + movieId, {responseType:'text' as 'json'});
   }
 
   public addReview(review:Review): Observable<Review[]> {
-    return this.http.post<Review[]>(URL + "addReview", review);
+    return this.http.post<Review[]>("http://localhost:8085/review/addReview", review);
   }
 
 }

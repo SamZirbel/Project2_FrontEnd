@@ -1,4 +1,5 @@
 import { ThisReceiver } from '@angular/compiler';
+import { Content } from '@angular/compiler/src/render3/r3_ast';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Movie } from '../models/movie';
@@ -26,11 +27,13 @@ export class ReviewsComponent implements OnInit {
 
     this.apiServicer.getSeriesMovieData(this.router.snapshot.paramMap.get("id")).subscribe(res2 => {
       this.movie = new Movie(res2.imdbID, res2.Title, res2.Released, res2.Plot, res2.Genre, res2.Director);
+      console.log("Current movie: " + this.movie.title);
+      this.populateReviews();
     });
-    this.populateReviews();
   }
 
   submitReview(fdata: {content: string, rating: number}){
+    console.log("input fields: content: " + fdata.content + " rating: " + fdata.rating);
     let user = sessionStorage.getItem('user');
     let newReview : Review = new Review(JSON.parse(user ? user : 'oops'), this.movie, fdata.rating, fdata.content);
     this.reviewService.addReview(newReview).subscribe(reviewList =>{
@@ -39,10 +42,12 @@ export class ReviewsComponent implements OnInit {
   }
 
   populateReviews(){
-    this.reviewService.getReviews(this.movie).subscribe(
+    this.reviewService.getReviews(this.movie.imdbId).subscribe(
       reviewList => {
-        this.reviews = reviewList;
-        console.log(this.reviews);
+        if(reviewList){
+          this.reviews = reviewList;
+          console.log(this.reviews);
+        }
       }
     )
   }

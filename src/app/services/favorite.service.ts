@@ -10,13 +10,31 @@ export class FavoriteService {
 
   constructor(private httpclient : HttpClient) { }
 
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Credentials': 'true'
+  // httpOptions = {
+  //   headers: new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //     'Access-Control-Allow-Credentials': 'true'
 
-    })
+  //   })
+  // }
+
+
+  overrideNull(): string {
+    if (sessionStorage.getItem('token') === null) return '';
+    return sessionStorage.getItem('token') as any;
   }
+
+httpOptions = {
+    headers: new HttpHeaders({
+      Authorization: this.overrideNull(),
+     
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': '*',
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Allow-Credentials': 'true',
+    }),
+  };
 
   addFavorite(favorite : Favorite) : Observable<Favorite> {
 
