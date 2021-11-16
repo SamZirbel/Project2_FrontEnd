@@ -61,7 +61,7 @@ export class ResetPassComponent implements OnInit {
     const obj = JSON.parse(this.usr);
    // console.log(obj);
     this.service.geUpdatePass(obj.userId, newpass).subscribe((pdata) => {
-        console.warn(pdata);
+        //console.warn(pdata);
         if(pdata!=null){
           let dialogRef = this.dialog.open(
             SuccessDialogComponent,
