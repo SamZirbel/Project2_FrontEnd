@@ -36,4 +36,15 @@ export class ReviewsComponent implements OnInit {
     )
   }
 
+  userHasReview() : boolean{
+    let u = sessionStorage.getItem('user');
+    let user = JSON.parse(u ? u : 'oops');
+    this.reviews.forEach(review => {
+      if(user.username == review.username){
+        return true;
+      }
+    });
+    return false;
+  }
+
 }
