@@ -59,7 +59,7 @@ export class ApiService {
   }
   getSeriesMovies(id:any): Observable<ImdbMultiData[]>{
    
-    console.log( id);
+    //console.log( id);
 
     return this.httpclient.get<ImdbMultiData[]>("http://www.omdbapi.com/?i="+ id +this.apiKeyTag+ this.apiKey) as  Observable<ImdbMultiData[]>
   }

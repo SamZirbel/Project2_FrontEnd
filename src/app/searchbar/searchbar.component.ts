@@ -31,7 +31,7 @@ export class SearchbarComponent implements OnInit {
 
   dosomething2() {
 
-    console.log("Do Something 2");
+   // console.log("Do Something 2");
 
     let sea = "";
 
@@ -43,14 +43,15 @@ export class SearchbarComponent implements OnInit {
 
 
   this.apiServicer.getAllMovies(sea).subscribe(res=>{
+    console.warn(res)
     for(let i:any=0; i<Object(res).Search.length; i++){ 
       this.rest.length=0;
 
-          console.log(sea);
+          //console.log(sea);
 
           if (sea == undefined) {
 
-            console.log("Undefined Capture");
+           // console.log("Undefined Capture");
 
           }
 
@@ -63,7 +64,7 @@ export class SearchbarComponent implements OnInit {
       //if (this.firstFlag != 0) {
 
         if((Object(res).Search.length-1)==i){
-          console.log(this.rest)
+         // console.log(this.rest)
           sessionStorage.setItem("result", JSON.stringify(this.rest));
         }
 })
@@ -79,7 +80,7 @@ export class SearchbarComponent implements OnInit {
 
   dosomething(formValue : NgForm){
 
-    console.log("Do Something");
+    //console.log("Do Something");
 
 /*
     console.log(formValue.submitted);
@@ -92,7 +93,7 @@ export class SearchbarComponent implements OnInit {
 
     sessionStorage.setItem("result", "");
 
-    console.log(this.rest);
+   // console.log(this.rest);
 
     this.firstFlat = 0;
 
@@ -108,7 +109,7 @@ export class SearchbarComponent implements OnInit {
 
     //holder.createProperty(temp) = "Temporary Test"//(temp);
 
-    console.log(formValue.value);
+   // console.log(formValue.value);
 
 
 
@@ -122,10 +123,10 @@ export class SearchbarComponent implements OnInit {
 
     }
 
-    console.log(formValue.value);
+    // console.log(formValue.value);
 
 
-    console.log("First : " + this.firstFlat);
+    // console.log("First : " + this.firstFlat);
 
     
 
@@ -147,14 +148,15 @@ export class SearchbarComponent implements OnInit {
 
 
   this.apiServicer.getAllMovies(sea.seah).subscribe(res=>{
+    console.warn(res)
     for(let i:any=0; i<Object(res).Search.length; i++){ 
       this.rest.length=0;
 
-          console.log(formValue.value);
+         // console.log(formValue.value);
 
           if (formValue.value == undefined) {
 
-            console.log("Undefined Capture");
+          //  console.log("Undefined Capture");
 
           }
 
@@ -167,7 +169,7 @@ export class SearchbarComponent implements OnInit {
       //if (this.firstFlag != 0) {
 
         if((Object(res).Search.length-1)==i){
-          console.log(this.rest)
+          //console.log(this.rest)
           sessionStorage.setItem("result", JSON.stringify(this.rest));
         }
 
