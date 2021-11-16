@@ -55,15 +55,16 @@ export class LoginAuthComponent implements OnInit {
       sessionStorage.setItem('token', 'Bearer ' + data);
       this.service.getUserInfo(fdata.username).subscribe(
         (userdata) => {
+          console.warn(userdata);
           sessionStorage.setItem('user', JSON.stringify(userdata));
-          // console.log(sessionStorage.getItem('token'));
+           console.log(sessionStorage.getItem('token'));
           this.router.navigateByUrl('home');
         },
         (error) => {
           //Error callback
           console.error('error caught in login component');
           console.error(error);
-
+          this.router.navigateByUrl('login');
           throw error; //You can also throw the error to a global error handler
         }
       );
