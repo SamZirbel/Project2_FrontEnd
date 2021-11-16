@@ -11,6 +11,7 @@ import { SignupComponent } from './user-auth/signup/signup.component';
 
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { FavListComponent } from './fav-list/fav-list.component';
 
 
 const routes: Routes = [
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path: 'resetpass',
     component: ResetPassComponent,
+  },
+  {
+    path: 'favlist',
+    component: FavListComponent,
   },
   {
     path: 'home/movie/:id',

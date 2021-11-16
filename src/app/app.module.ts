@@ -35,6 +35,7 @@ import  {GlobalErrorHandlerService} from './global-error-handler-service';
 import { SuccessDialogComponent } from './shared/dialogs/success-dialog/success-dialog.component';
 import { ErrorDialogComponent } from './shared/dialogs/error-dialog/error-dialog.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { FavListComponent } from './fav-list/fav-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +46,8 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
     SuccessDialogComponent,
     ErrorDialogComponent,
     MovieInfoComponent,
-    MovieDetailsComponent
+    MovieDetailsComponent,
+    FavListComponent
    ],
   imports: [
     BrowserModule,
