@@ -52,18 +52,19 @@ export class LoginAuthComponent implements OnInit {
   doLogin(fdata: LoginInfo) {
     // console.log(fdata.username);
     this.service.generateToken(fdata).subscribe((data) => {
-      sessionStorage.setItem('token', 'Bearer ' + data);
+      localStorage.setItem('token', 'Bearer ' + data);
       this.service.getUserInfo(fdata.username).subscribe(
         (userdata) => {
+          console.warn(userdata);
           sessionStorage.setItem('user', JSON.stringify(userdata));
-          // console.log(sessionStorage.getItem('token'));
+           //console.log(localStorage.getItem('token'));
           this.router.navigateByUrl('home');
         },
         (error) => {
           //Error callback
           console.error('error caught in login component');
           console.error(error);
-
+          this.router.navigateByUrl('login');
           throw error; //You can also throw the error to a global error handler
         }
       );
@@ -86,8 +87,10 @@ export class LoginAuthComponent implements OnInit {
   //   }
   // }
 
+  
   ngOnInit(): void {
-    if (sessionStorage.getItem('token') != null) {
+   console.log( localStorage.getItem('token'));
+    if (localStorage.getItem('token') != null) {
       this.router.navigateByUrl('home');
     }
   }

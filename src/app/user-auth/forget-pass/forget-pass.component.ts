@@ -43,7 +43,7 @@ export class ForgetPassComponent implements OnInit {
     this.service.getUserInfo(forget.username).subscribe((userdata) => {
   
     if(userdata!= null){
-      console.log(userdata)
+     // console.log(userdata)
       sessionStorage.setItem('temp',  JSON.stringify(userdata));
       this.router.navigateByUrl('resetpass');
     }

@@ -37,6 +37,7 @@ import { SuccessDialogComponent } from './shared/dialogs/success-dialog/success-
 import { ErrorDialogComponent } from './shared/dialogs/error-dialog/error-dialog.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { FavListComponent } from './fav-list/fav-list.component';
+import { Searchbar2Component } from './searchbar2/searchbar2.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +50,8 @@ import { FavListComponent } from './fav-list/fav-list.component';
     MovieInfoComponent,
     ReviewsComponent,
     MovieDetailsComponent,
-    FavListComponent
+    FavListComponent,
+    Searchbar2Component
    ],
   imports: [
     BrowserModule,

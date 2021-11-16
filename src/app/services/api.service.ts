@@ -59,7 +59,7 @@ export class ApiService {
   }
   getSeriesMovies(id:any): Observable<ImdbMultiData[]>{
    
-    console.log( id);
+    //console.log( id);
 
     return this.httpclient.get<ImdbMultiData[]>("http://www.omdbapi.com/?i="+ id +this.apiKeyTag+ this.apiKey) as  Observable<ImdbMultiData[]>
   }
@@ -82,7 +82,20 @@ export class ApiService {
 
   }*/
 
-
+  async fetchAllMovies(data:string){
+  
+    let response = await fetch("http://www.omdbapi.com/?s="+ data + this.apiKeyTag + this.apiKey);
+  
+      let data2 = await response.json();
+      return data2
+   }
+   
+  async fetchSeriesMovies(id:any){
+   
+    let response = await fetch("http://www.omdbapi.com/?i="+ id +this.apiKeyTag+ this.apiKey) 
+    let data2 = await response.json();
+    return data2
+  }
 
   public queryTitle(title : String) : Observable<ArrayBuffer> {
 

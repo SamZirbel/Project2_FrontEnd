@@ -13,6 +13,7 @@ import { SearchbarComponent } from './searchbar/searchbar.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { FavListComponent } from './fav-list/fav-list.component';
+import { Searchbar2Component } from './searchbar2/searchbar2.component';
 
 
 const routes: Routes = [
@@ -39,6 +40,10 @@ const routes: Routes = [
   {
     path: 'resetpass',
     component: ResetPassComponent,
+  },
+  {
+    path: 'home/search2',
+    component:Searchbar2Component,
   },
   {
     path: 'favlist',
