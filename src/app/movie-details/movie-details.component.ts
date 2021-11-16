@@ -28,7 +28,7 @@ export class MovieDetailsComponent implements OnInit {
     public dateFormatter : DateFormaterService
   ) { }
 
-  public currentRate = 8;
+  public currentRate = 0;
   public buttonState : number = 0;
   public movieData :  AllMovieData | null = null;
 

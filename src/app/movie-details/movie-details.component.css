@@ -1,0 +1,41 @@
+
+#DetailsPosterHolder {
+
+  text-align : center;
+  padding-top : 10px;
+
+}
+
+#DetailsAccoridanHolder {
+
+  margin-top : 10px;
+
+  margin-left : 15%;
+  margin-right : 5%;
+
+}
+
+#DetailsAccordian1Title {
+  
+  font-size : 26px;
+  font-weight : 600;
+
+}
+
+
+
+#DetailsStars {
+
+  margin-left : 16%;
+
+  font-size : 30px;
+  color : rgb(200, 170, 100);
+
+}
+
+#DetailsStarCount {
+
+  font-size: 18px;
+  color: rgb(200, 170, 100);
+
+}
