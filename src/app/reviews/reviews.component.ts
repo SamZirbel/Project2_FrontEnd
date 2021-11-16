@@ -57,9 +57,11 @@ export class ReviewsComponent implements OnInit {
     let user = JSON.parse(u ? u : 'oops');
     let hasReview : boolean = false;
     this.reviews.forEach(review => {
+
       if(user.username === review.username){
         hasReview = true;
       }
+
     });
     return hasReview;
   }
