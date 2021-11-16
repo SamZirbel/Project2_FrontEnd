@@ -32,6 +32,7 @@ export class ReviewsComponent implements OnInit {
     this.reviewService.getReviews(this.movie).subscribe(
       reviewList => {
         this.reviews = reviewList;
+        console.log(this.reviews);
       }
     )
   }
@@ -43,7 +44,6 @@ export class ReviewsComponent implements OnInit {
       if(user.username == review.username){
         return true;
       }
-      else return false
     });
     return false;
   }
