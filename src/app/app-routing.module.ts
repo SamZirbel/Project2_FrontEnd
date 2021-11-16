@@ -11,6 +11,8 @@ import { SignupComponent } from './user-auth/signup/signup.component';
 
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { ReviewsComponent } from './reviews/reviews.component';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
+
 
 const routes: Routes = [
   {
@@ -38,15 +40,15 @@ const routes: Routes = [
     component: ResetPassComponent,
   },
   {
-    path: 'movie/id',
-    component: ReviewsComponent,
-  },
-  {
     path: '', pathMatch: 'full', redirectTo: 'login'
   },
   {
     path: '**',
     component: NoPageComponent,
+  },
+  {
+    path: 'movie/:id',
+    component: MovieDetailsComponent,
   }
 ];
 

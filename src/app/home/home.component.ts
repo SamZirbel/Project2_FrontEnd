@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
   private searchbar : HTMLElement | null= document.querySelector('app-searchbar'); 
 
 
-  public activeMovie : Movie = new Movie("This Is A Title Change", "", "", "", "");
+  public activeMovie : Movie = new Movie("","This Is A Title Change", "", "", "", "");
 
   ngOnInit(): void {
 

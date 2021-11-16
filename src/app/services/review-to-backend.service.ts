@@ -26,4 +26,8 @@ export class ReviewToBackendService {
     return this.http.get<Review[]>(URL + "reviewsByMovie/" + request, {responseType:'text' as 'json'});
   }
 
+  public addReview(review:Review): Observable<Review[]> {
+    return this.http.post<Review[]>(URL + "addReview", review);
+  }
+
 }
