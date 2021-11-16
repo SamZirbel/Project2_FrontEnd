@@ -23,6 +23,7 @@ import {AngularMaterialModule} from './angular-material/angular-material.module'
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { MovieInfoComponent } from './movie-info/movie-info.component';
+import { ReviewsComponent } from './reviews/reviews.component';
 
  
 
@@ -35,6 +36,7 @@ import  {GlobalErrorHandlerService} from './global-error-handler-service';
 import { SuccessDialogComponent } from './shared/dialogs/success-dialog/success-dialog.component';
 import { ErrorDialogComponent } from './shared/dialogs/error-dialog/error-dialog.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { FavListComponent } from './fav-list/fav-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +47,9 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
     SuccessDialogComponent,
     ErrorDialogComponent,
     MovieInfoComponent,
-    MovieDetailsComponent
+    ReviewsComponent,
+    MovieDetailsComponent,
+    FavListComponent
    ],
   imports: [
     BrowserModule,

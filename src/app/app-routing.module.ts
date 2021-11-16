@@ -10,7 +10,9 @@ import { ResetPassComponent } from './user-auth/reset-pass/reset-pass.component'
 import { SignupComponent } from './user-auth/signup/signup.component';
 
 import { SearchbarComponent } from './searchbar/searchbar.component';
+import { ReviewsComponent } from './reviews/reviews.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { FavListComponent } from './fav-list/fav-list.component';
 
 
 const routes: Routes = [
@@ -39,16 +41,21 @@ const routes: Routes = [
     component: ResetPassComponent,
   },
   {
+    path: 'favlist',
+    component: FavListComponent,
+  },
+  {
+    path: 'home/movie/:id',
+    component: MovieDetailsComponent,
+  },
+  {
     path: '', pathMatch: 'full', redirectTo: 'login'
   },
   {
     path: '**',
     component: NoPageComponent,
   },
-  {
-    path: 'movie/:id',
-    component:MovieDetailsComponent,
-  }
+
 ];
 
 @NgModule({
