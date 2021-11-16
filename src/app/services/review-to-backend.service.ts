@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { Movie } from '../models/movie'
 import { Review } from '../models/review'
+import { DateFormaterService } from './date-formater.service';
 //import { ifError } from 'assert';
 
 
@@ -12,22 +13,32 @@ import { Review } from '../models/review'
 })
 export class ReviewToBackendService {
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient, private dateFormater: DateFormaterService) { }
+
+  overrideNull(): string {
+    if (sessionStorage.getItem('token') === null) return '';
+    return sessionStorage.getItem('token') as any;
+  }
 
   httpOptions = {
     headers: new HttpHeaders({
+      Authorization: this.overrideNull(),
+     
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': '*',
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Credentials': 'true'
-
-    })
-  }
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Allow-Credentials': 'true',
+    }),
+  };
 
   public getReviews(movieId:string):Observable<Review[]> {
     return this.http.get<Review[]>("http://localhost:8085/review/reviewsByMovie/" + movieId, {responseType:'text' as 'json'});
   }
 
   public addReview(review:Review): Observable<Review[]> {
-    return this.http.post<Review[]>("http://localhost:8085/review/addReview", review);
+    review.movie.release = this.dateFormater.formatDate(review.movie.release.toString());
+    return this.http.post<Review[]>("http://localhost:8085/review/addReview", JSON.stringify(review), this.httpOptions);
   }
 
 }

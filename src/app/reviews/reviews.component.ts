@@ -17,6 +17,8 @@ export class ReviewsComponent implements OnInit {
 
   movie = new Movie("", "", "", "", "", "");;
   reviews : Array<Review> = [];
+  rating : number = 1;
+  content : string = '';
 
   constructor(//private movieService: MovieToBackendService,
               private reviewService: ReviewToBackendService,
@@ -32,10 +34,18 @@ export class ReviewsComponent implements OnInit {
     });
   }
 
-  submitReview(fdata: {content: string, rating: number}){
-    console.log("input fields: content: " + fdata.content + " rating: " + fdata.rating);
+  submitReview(){
+    console.log("input fields: content: " + this.content + " rating: " + this.rating);
     let user = sessionStorage.getItem('user');
-    let newReview : Review = new Review(JSON.parse(user ? user : 'oops'), this.movie, fdata.rating, fdata.content);
+    console.log("before parse");
+    if(user){
+      user = JSON.parse(user);
+    }
+    console.log("after parse");
+    console.log(user);
+    let newReview : Review = new Review(user, this.movie, this.rating, this.content);
+    console.log("review:");
+    console.log(newReview);
     this.reviewService.addReview(newReview).subscribe(reviewList =>{
       this.reviews = reviewList;
     });
@@ -58,7 +68,7 @@ export class ReviewsComponent implements OnInit {
     let hasReview : boolean = false;
     this.reviews.forEach(review => {
 
-      if(user.username === review.username){
+      if(user.username === review.user?.username){
         hasReview = true;
       }
 
