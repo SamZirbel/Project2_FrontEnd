@@ -22,7 +22,18 @@
 
 }
 
+#DetailsAccordian2Title, #DetailsAccordian3Title {
 
+  font-size : 16px;
+  font-weight : 500;
+
+  width : 100%;
+
+  outline : unset;
+  box-shadow: none;
+  border : none;
+
+}
 
 #DetailsAccordian1Title, #DetailsAccordian1Title:active, #DetailsAccordian1Title:focus {
   

@@ -58,7 +58,15 @@
             <p> Plot : {{movieData?.Plot}} </p>
                 </ng-template>
               </ngb-panel>
-              <ngb-panel title="{{movieData?.Title}} : Movie Reception" id="DetailsAccordian2Holder">
+              <ngb-panel id="DetailsAccordian2Holder">
+                <ng-template ngbPanelHeader>
+                  
+                    <button id = "DetailsAccordian2Title"
+                      ngbPanelToggle data-target="DetailsAccordian2Holder" class="btn"> Movie Reception / Statistics </button>
+                    
+
+                </ng-template>
+
                 <ng-template ngbPanelContent>
 
                   <p> Language : {{movieData?.Language}} </p>
@@ -74,7 +82,16 @@
                   
                 </ng-template>
               </ngb-panel>
-              <ngb-panel title="{{movieData?.Title}} : Production Staff">
+              <ngb-panel id="DetailsAccordian3Holder">
+                
+                <ng-template ngbPanelHeader>
+                  
+                    <button id = "DetailsAccordian3Title"
+                      ngbPanelToggle data-target="DetailsAccordian3Holder" class="btn"> Production Staff </button>
+                    
+
+                </ng-template>
+
                 <ng-template ngbPanelContent>
                   <p> Writer : {{movieData?.Writer}} </p>
                   <p> Director : {{movieData?.Director}} </p>
