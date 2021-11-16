@@ -12,7 +12,7 @@ import { ReviewToBackendService } from '../services/review-to-backend.service';
 })
 export class ReviewsComponent implements OnInit {
 
-  movie : Movie;
+  movie = new Movie("", "", "", "", "", "");;
   reviews : Array<Review> = [];
 
   constructor(private movieService: MovieToBackendService, private reviewService: ReviewToBackendService) { }
@@ -43,6 +43,7 @@ export class ReviewsComponent implements OnInit {
       if(user.username == review.username){
         return true;
       }
+      else return false
     });
     return false;
   }

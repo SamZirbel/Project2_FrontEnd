@@ -22,7 +22,11 @@ import { Router } from '@angular/router';
 export class SearchbarComponent implements OnInit {
 
 
+  public searchQuery : String = "";
+
   rest:any[]=[];
+
+
   dosomething(sea:any){
 
 
@@ -53,6 +57,7 @@ export class SearchbarComponent implements OnInit {
 
    this.ngOnInit();
 
+
   }
 
 
@@ -79,7 +84,12 @@ export class SearchbarComponent implements OnInit {
 
   ngOnInit(): void {
 
+    let inputVar = document.getElementById('SearchMovieInput');
 
+    Object(inputVar).value = "one";
+    Object(inputVar).value = "";
+
+    this.renderer.setAttribute(Object(document.getElementById('SearchMovieInput')), 'value', ''); 
 
   //   this.renderer.listen(this.submitButton, 'click', (sea) => {
 
@@ -114,6 +124,17 @@ export class SearchbarComponent implements OnInit {
 
 
   // });
+
+  }
+
+  ngOnChanges() : void {
+
+    // //if (Object(document.getElementById('SearchMovieInput')).value) {
+    // let queryValue : String | null = Object(document.getElementById('SearchMovieInput')).value;
+
+    // if (queryValue) {
+    // this.searchQuery = queryValue;
+    // }
 
   }
 

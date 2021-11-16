@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {UserServiceService} from '../services/user-service.service'
 import {SignupInfo} from '../models/signup-info'
 import { UserInfo } from '../models/user-info';
+import { FormControl, FormGroup, Validators,FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-forget-pass',
@@ -10,8 +11,33 @@ import { UserInfo } from '../models/user-info';
   styleUrls: ['./forget-pass.component.css']
 })
 export class ForgetPassComponent implements OnInit {
+  
 
-  constructor(private router: Router, private service: UserServiceService) { }
+  constructor(private router: Router, private service: UserServiceService, private formBuilder: FormBuilder,) { }
+  
+  
+  
+  form: FormGroup = this.formBuilder.group({
+    dname: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(20),
+    ]),
+    email: new FormControl('', [
+      Validators.email,
+      Validators.required,
+    ]),
+    username: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(20),
+    ])
+  }
+  
+  );
+
+  public hasError = (controlName: string, errorName: string) => {
+    return this.form.controls[controlName].hasError(errorName);
+  };
+
   resetpass(forget:UserInfo ) {
    
     this.service.getUserInfo(forget.username).subscribe((userdata) => {

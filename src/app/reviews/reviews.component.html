@@ -1,10 +1,12 @@
-<form class="review-form" *ngif="!userHasReview()" (ngSubmit)="submitReview(form.value)">
-    <p>Add your own review:</p>
+
+<h1> Reviews</h1>
+<p>Add your own review:</p>
+<form class="review-form" #form='ngForm' *ngif="!userHasReview()"  (ngSubmit)="submitReview(form.value)">
     <label for="review-content">Review:</label>
     <textarea id="review-content" name="review-content" rows="5" cols="50"></textarea>
-    <label for="rating-input">Rating:</label>
-    <input type="number" id="rating-input" name="rating-input" min=1 max=5></input>
-    <button type="submit">Post review</button>
+    <label for="rating-input">Rating:</label><br>
+    <input type="number" id="rating-input" name="rating-input" min=1 max=5>
+    <button type="submit">Rating</button>
 </form>
 
 <div class="review-list" *ngFor="let r of reviews">
