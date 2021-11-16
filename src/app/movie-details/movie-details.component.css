@@ -24,10 +24,14 @@
 
 
 
-#DetailsAccordian1Title {
+#DetailsAccordian1Title, #DetailsAccordian1Title:active, #DetailsAccordian1Title:focus {
   
   font-size : 26px;
   font-weight : 600;
+
+  outline : unset;
+  box-shadow: none;
+  border : none;
 
 }
 
