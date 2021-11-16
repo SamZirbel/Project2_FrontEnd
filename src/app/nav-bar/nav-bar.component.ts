@@ -13,26 +13,26 @@ export class NavBarComponent implements OnInit {
   
   logout(){
     
-    sessionStorage.clear();
+    localStorage.clear();
    this.show=0;
     this.router.navigateByUrl("login")
     this.ngOnInit();
   }
 
   ngOnInit(): void {
-    if(!(sessionStorage.getItem("token")==null))
+    if(!(localStorage.getItem("token")==null))
     this.show=1;
     else this.show=0;
     
   }
   ngAfterViewInit(): void {
-    if(!(sessionStorage.getItem("token")==null))
+    if(!(localStorage.getItem("token")==null))
     this.show=1;
    
     
   }
   ngDoCheck(){
-    if(!(sessionStorage.getItem("token")==null))
+    if(!(localStorage.getItem("token")==null))
     this.show=1;
   }
 

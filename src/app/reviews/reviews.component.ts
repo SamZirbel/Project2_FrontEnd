@@ -2,7 +2,7 @@ import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Movie } from '../models/movie';
 import { Review } from '../models/review';
-import { MovieToBackendService } from '../services/movie-to-backend.service';
+//import { MovieToBackendService } from '../services/movie-to-backend.service';
 import { ReviewToBackendService } from '../services/review-to-backend.service';
 
 @Component({
@@ -15,7 +15,8 @@ export class ReviewsComponent implements OnInit {
   movie = new Movie("", "", "", "", "", "");;
   reviews : Array<Review> = [];
 
-  constructor(private movieService: MovieToBackendService, private reviewService: ReviewToBackendService) { }
+  constructor(//private movieService: MovieToBackendService, 
+private reviewService: ReviewToBackendService) { }
 
   ngOnInit(): void {
   }

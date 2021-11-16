@@ -1,73 +1,68 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+// import { Injectable } from '@angular/core';
+// import { HttpClient, HttpHeaders } from '@angular/common/http';
+// import { Observable } from 'rxjs';
 
-import { Movie } from '../models/movie'
-
-
-@Injectable({
-  providedIn: 'root'
-})
-export class MovieToBackendService {
-
-  private readonly toLocalPort : String = 'http://localhost:8085/';
+// import { Movie } from '../models/movie'
 
 
-  constructor(private httpclient : HttpClient) { }
+// @Injectable({
+//   providedIn: 'root'
+// })
+// export class MovieToBackendService {
 
-  overrideNull(): string {
-    if (sessionStorage.getItem('token') === null) return '';
-    return sessionStorage.getItem('token') as any;
-  }
+//   private readonly toLocalPort : String = 'http://localhost:8085/';
+
+
+//   constructor(private httpclient : HttpClient) { }
 
 
 
-  public generateToken(movie : Movie) : Observable<String> {
-    
-    console.log("Doing The Service Thing");
+//   public generateToken(movie : Movie) : Observable<String> {
 
-    const httpOptions = {
-        headers: new HttpHeaders({
-          Authorization: this.overrideNull(),
-          responseType: 'text' as 'json',
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': '*',
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Headers': 'Content-Type',
-          'Access-Control-Allow-Credentials': 'true',
-        }),
-      }
+//     console.log("Doing The Service Thing");
+// /*    
+//     let tokenString = 'Bearer '+ movie;
+
+//     const httpOptions = {
+
+//       headers : new HttpHeaders({
+//         "Authorization" : tokenString,
+//         "Content-Type" : "application/json",
+//         "Access-Control-Allow-Credentials" : "true",
+//         responseType : "text" as "json"
+//       })
+
+//     }
+// */
+
+//     return this.httpclient.post<string>(this.toLocalPort.toString() + "movie", movie, {responseType : "text" as 'json'});//, httpOptions);
+
+//   }
 
 
+//   public welcome(token : string) {
 
-    return this.httpclient.post<string>("http://localhost:8085/" + "movie", movie, httpOptions) as Observable<String>;
+//     let tokenString = 'Bearer ' + token;
 
-  }
+//     const httpOptions = {
 
+//       headers : new HttpHeaders({
+//         "Authorization" : tokenString,
+//         "Content-Type" : "application/json",
+//         "Access-Control-Allow-Credentials" : "true",
+//         responseType : "text" as "json"
+//       })
 
-  public welcome(token : string) {
+//     }
 
-    let tokenString = 'Bearer ' + token;
+//     return this.httpclient.get(this.toLocalPort + "welcome", httpOptions);
 
-    const httpOptions = {
+//   }
 
-      headers : new HttpHeaders({
-        "Authorization" : tokenString,
-        "Content-Type" : "application/json",
-        "Access-Control-Allow-Credentials" : "true",
-        responseType : "text" as "json"
-      })
-
-    }
-
-    return this.httpclient.get(this.toLocalPort + "welcome", httpOptions);
-
-  }
-
-  login(movie : Movie) { };
+//   login(movie : Movie) { };
 
  
-}
+// }
 
 
 
@@ -101,6 +96,19 @@ export class MovieToBackendService {
 */
 
 
+  // public addMovie(movie : Movie) : Observable<string> {
+
+  //   console.log("Sending Movie : " + movie);
+
+  //   (this.httpclient.post<string>(('http://localhost:8085/movie'),JSON.stringify(movie), {responseType:'text' as 'json'}))
+  //     .generateToken(movie).subscribe(
+  //     data => { 
+  //     let tokenized : any = sessionStorage.setItem("token", data);
+  //     console.log ("Movie Sent , Received data : " + data);
+
+  // }
+
+
 
 /*
  constructor(
@@ -129,11 +137,11 @@ export class MovieToBackendService {
  
 */
 
-/*
-public generateToken(request:LoginInfo):Observable<string> {
-  return this.http.post<string>("http://localhost:8085/loginauth", request, {responseType:'text' as 'json'});
-}
-*/
+
+// public generateToken(request:LoginInfo):Observable<string> {
+//   return this.http.post<string>("http://localhost:8085/loginauth", request, {responseType:'text' as 'json'});
+// }
+
 
 
 

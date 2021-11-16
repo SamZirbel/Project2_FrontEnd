@@ -223,14 +223,14 @@
     
 //     this.sendMovie(queryMovie);
 
-// /*
-//     this.movieToBackend.generateToken(queryMovie).subscribe(
-//       data => {
-//         let tokenized : any = sessionStorage.setItem("token", data.toString());
-//         console.log(data);
-//       }
-//     )
-// */
+
+    // this.movieToBackend.generateToken(queryMovie).subscribe(
+    //   data => {
+    //     let tokenized : any = sessionStorage.setItem("token", data.toString());
+    //     console.log(data);
+    //   }
+    // )
+
 
     
 

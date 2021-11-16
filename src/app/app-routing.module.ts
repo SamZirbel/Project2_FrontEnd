@@ -42,7 +42,7 @@ const routes: Routes = [
     component: ResetPassComponent,
   },
   {
-    path: 'search2',
+    path: 'home/search2',
     component:Searchbar2Component,
   },
   {

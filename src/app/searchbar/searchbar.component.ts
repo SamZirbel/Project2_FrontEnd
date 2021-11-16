@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { Movie } from '../models/movie';
 
-import { MovieToBackendService } from '../services/movie-to-backend.service';
+//import { MovieToBackendService } from '../services/movie-to-backend.service';
 import { HideComponentService } from '../services/hide-component.service';
 import { DateFormaterService } from '../services/date-formater.service';
 import { ApiService } from '../services/api.service';
@@ -22,16 +22,61 @@ import { NgForm } from '@angular/forms';
 
 export class SearchbarComponent implements OnInit {
 
+  constructor( 
+    private renderer : Renderer2,
+    //private movieToBackend : MovieToBackendService,
+    private hider : HideComponentService,
+    private dateFromatter : DateFormaterService,
+    private apiServicer : ApiService,
+    private movieInfoHoler : MovieInfoHolderService,
+    private router : Router
+  ) { }
+
+
+
+  public userInput : string = "";
+
   public firstFlat : number = 0;
   public firstFlag : number = 0;
 
   public searchQuery : String = "";
 
+
+
+  function2(movieValue : string) {
+
+    this.userInput = movieValue;
+
+    console.log("User Input : " + this.userInput);
+
+    this.apiServicer.getAllMovies(this.userInput).subscribe(
+      res => {
+    for(let i:any=0; i<Object(res).Search.length; i++){ 
+      this.rest.length=0;
+
+
+    this.apiServicer.getSeriesMovies(Object(res).Search[i].imdbID).subscribe(res2=>{
+
+      this.rest.push(res2)
+      
+
+        if((Object(res).Search.length-1)==i){
+          console.log(this.rest)
+          sessionStorage.setItem("result", JSON.stringify(this.rest));
+        }
+        })
+   
+      } // << End FOr Loop
+
+    }) // << End Of API First Subscription
+
+  }
+
   rest:any[]=[];
 
   dosomething2() {
 
-    console.log("Do Something 2");
+   // console.log("Do Something 2");
 
     let sea = "";
 
@@ -43,14 +88,15 @@ export class SearchbarComponent implements OnInit {
 
 
   this.apiServicer.getAllMovies(sea).subscribe(res=>{
+    console.warn(res)
     for(let i:any=0; i<Object(res).Search.length; i++){ 
       this.rest.length=0;
 
-          console.log(sea);
+          //console.log(sea);
 
           if (sea == undefined) {
 
-            console.log("Undefined Capture");
+           // console.log("Undefined Capture");
 
           }
 
@@ -63,7 +109,7 @@ export class SearchbarComponent implements OnInit {
       //if (this.firstFlag != 0) {
 
         if((Object(res).Search.length-1)==i){
-          console.log(this.rest)
+         // console.log(this.rest)
           sessionStorage.setItem("result", JSON.stringify(this.rest));
         }
 })
@@ -79,7 +125,7 @@ export class SearchbarComponent implements OnInit {
 
   dosomething(formValue : NgForm){
 
-    console.log("Do Something");
+    //console.log("Do Something");
 
 /*
     console.log(formValue.submitted);
@@ -92,7 +138,7 @@ export class SearchbarComponent implements OnInit {
 
     sessionStorage.setItem("result", "");
 
-    console.log(this.rest);
+   // console.log(this.rest);
 
     this.firstFlat = 0;
 
@@ -108,7 +154,7 @@ export class SearchbarComponent implements OnInit {
 
     //holder.createProperty(temp) = "Temporary Test"//(temp);
 
-    console.log(formValue.value);
+   // console.log(formValue.value);
 
 
 
@@ -122,10 +168,10 @@ export class SearchbarComponent implements OnInit {
 
     }
 
-    console.log(formValue.value);
+    // console.log(formValue.value);
 
 
-    console.log("First : " + this.firstFlat);
+    // console.log("First : " + this.firstFlat);
 
     
 
@@ -147,16 +193,17 @@ export class SearchbarComponent implements OnInit {
 
 
   this.apiServicer.getAllMovies(sea.seah).subscribe(res=>{
+    console.warn(res)
     for(let i:any=0; i<Object(res).Search.length; i++){ 
       this.rest.length=0;
 
-          console.log(formValue.value);
+          // console.log(formValue.value);
 
-          if (formValue.value == undefined) {
+          // if (formValue.value == undefined) {
 
-            console.log("Undefined Capture");
+          //   console.log("Undefined Capture");
 
-          }
+          // }
 
     this.apiServicer.getSeriesMovies(Object(res).Search[i].imdbID).subscribe(res2=>{
       
@@ -167,7 +214,7 @@ export class SearchbarComponent implements OnInit {
       //if (this.firstFlag != 0) {
 
         if((Object(res).Search.length-1)==i){
-          console.log(this.rest)
+          //console.log(this.rest)
           sessionStorage.setItem("result", JSON.stringify(this.rest));
         }
 
@@ -212,11 +259,6 @@ export class SearchbarComponent implements OnInit {
 
   //public input3 :string = "";
 
-  //function2() {
-
-    //this.input2.insertData(this.input2);
-
-  //console.log(this.input2);
 
 /*
     this.apiServicer.getAllMovies(this.input3).subscribe(res=>{
@@ -254,15 +296,6 @@ export class SearchbarComponent implements OnInit {
 //     });
 
 
-  constructor( 
-    private renderer : Renderer2,
-    private movieToBackend : MovieToBackendService,
-    private hider : HideComponentService,
-    private dateFromatter : DateFormaterService,
-    private apiServicer : ApiService,
-    private movieInfoHoler : MovieInfoHolderService,
-    private router : Router
-  ) { }
 
   notUndefined() : void {
 
