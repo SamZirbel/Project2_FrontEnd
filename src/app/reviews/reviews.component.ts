@@ -65,7 +65,7 @@ export class ReviewsComponent implements OnInit {
     let hasReview : boolean = false;
     this.reviews.forEach(review => {
 
-      if(user.username === review.user?.username){
+      if(user.username === review.username){
         hasReview = true;
       }
 
