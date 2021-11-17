@@ -11,19 +11,20 @@
 
 <form id = "SearchMovieForm">
 
-    <label for="SearchMovieInput" id="SearchMovieLabel" class = "col-sm-2"> Search For A Movie!! </label>
+    <label for="SearchMovieInput" id="SearchMovieLabel" class = "col-sm-12"> Search For A Movie!! </label>
 
-    <!-- <div id = "SearchContainer"> -->
+    <div id="SearchContainer"> 
 
-    <input type="text" name="name2" id="SearchMovieInput" #MovieEntered class="col-sm-8 "
-    placeholder="To Update Your Results Below Enter A Movie To Search For!!"
-    (keyup.enter)="function2(MovieEntered.value)" 
-    (blur)="function2(MovieEntered.value); MovieEntered.value = ''">
+        <input type="text" name="name2" id="SearchMovieInput" #MovieEntered class="col-sm-9"
+        placeholder="To Update Your Results Below Enter A Movie To Search For!!"
+        (keyup.enter)="function2(MovieEntered.value)" 
+        (blur)="function2(MovieEntered.value); MovieEntered.value = ''">
 
-    <button (click) = function2(MovieEntered.value) id = "SearchMovieButton"
-        class = "col-sm-2">Search Movie</button>
+        <button (click) = function2(MovieEntered.value) id = "SearchMovieButton"
+            class = "col-sm-2">Search Movie</button>
 
-    <!-- <div> -->
+    </div>
+    
 
 </form>
 
