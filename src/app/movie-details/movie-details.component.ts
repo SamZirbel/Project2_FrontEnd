@@ -29,6 +29,7 @@ export class MovieDetailsComponent implements OnInit {
   ) { }
 
   public currentRate = 0;
+  public averageRate = 0;
   public buttonState : number = 0;
   public movieData :  AllMovieData | null = null;
 
