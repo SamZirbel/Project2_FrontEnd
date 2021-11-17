@@ -6,11 +6,30 @@ import { FavoriteService } from '../services/favorite.service';
 @Component({
   selector: 'app-fav-list',
   templateUrl: './fav-list.component.html',
-  styleUrls: ['./fav-list.component.css']
+  styleUrls: ['./fav-list.component.css'],
+  styles: [`
+      .star {
+        position: relative;
+        display: inline-block;
+        font-size: 3rem;
+        color: #d3d3d3;
+      }
+      .full {
+        color: red;
+      }
+      .half {
+        position: absolute;
+        display: inline-block;
+        overflow: hidden;
+        color: red;
+      }
+    `]
 })
 export class FavListComponent implements OnInit {
 
   constructor(public favoriteService : FavoriteService) { }
+
+  public HeartCount = 1;
 
   public favorites : Array<Favorite> = [];
 
