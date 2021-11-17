@@ -1,4 +1,5 @@
 import { ThisReceiver } from '@angular/compiler';
+import { Content } from '@angular/compiler/src/render3/r3_ast';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Movie } from '../models/movie';
@@ -71,9 +72,15 @@ export class ReviewsComponent implements OnInit {
 
   }
 
-  submitReview(fdata: {content: string, rating: number}){
+  submitReview(){
+    console.log("input fields: content: " + this.content + " rating: " + this.rating);
     let user = sessionStorage.getItem('user');
-    let newReview : Review = new Review(JSON.parse(user ? user : 'oops'), this.movie, fdata.rating, fdata.content);
+    if(user){
+      user = JSON.parse(user);
+    }
+    let newReview : Review = new Review(Object(user).username, this.movie, this.rating, this.content);
+    console.log("review:");
+    console.log(newReview);
     this.reviewService.addReview(newReview).subscribe(reviewList =>{
       this.reviewAdd = reviewList;
     });
@@ -118,15 +125,15 @@ export class ReviewsComponent implements OnInit {
   userHasReview() : boolean{
     let u = sessionStorage.getItem('user');
     let user = JSON.parse(u ? u : 'oops');
-    let hasReview: boolean=false;
+    let hasReview : boolean = false;
     this.reviews.forEach(review => {
 
       if(user.username === review.rid){
         hasReview = true;
       }
-      
+
     });
-    return false;
+    return hasReview;
   }
 
 }
