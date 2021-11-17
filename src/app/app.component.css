@@ -1,4 +1,4 @@
-footer {
+app-footer {
     position: fixed;
     left: 0;
     bottom: 0;
@@ -6,6 +6,9 @@ footer {
     height: 4rem;
     background-color: #673ab7;
     color: rgb(252, 252, 252);
+}
+body {
+    margin-bottom: 4rem;
 }
 .authors {
     position: absolute;
