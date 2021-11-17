@@ -8,6 +8,7 @@ import {Router} from '@angular/router';
 export class NavBarComponent implements OnInit {
 
   public currentUser = ''
+  public route = '/login'
   constructor(private router: Router) { }
    
   show:any;
@@ -22,24 +23,28 @@ export class NavBarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(!(localStorage.getItem("token")==null))
-    this.show=1;
-    else this.show=0;
+    if(!(localStorage.getItem("token")==null)) {
+      this.show=1;
+      this.route = '/home';
+    }
+    else {
+      this.show=0;
+      this.route = '/login';
+    }
     
   }
   ngAfterViewInit(): void {
-    if(!(localStorage.getItem("token")==null))
-    this.show=1;
-    let user = sessionStorage.getItem('user');
-    if (user) {
-      user = JSON.parse(user);
-      this.currentUser = Object(user).username;
+    if(!(localStorage.getItem("token")==null)){
+      this.show=1;
+      this.route = '/home';
     }
     
   }
   ngDoCheck(){
-    if(!(localStorage.getItem("token")==null))
-    this.show=1;
+    if(!(localStorage.getItem("token")==null)){
+      this.show=1;
+      this.route = '/home';
+    }
   }
 
 }
