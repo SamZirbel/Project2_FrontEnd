@@ -37,13 +37,10 @@ export class ReviewsComponent implements OnInit {
   submitReview(){
     console.log("input fields: content: " + this.content + " rating: " + this.rating);
     let user = sessionStorage.getItem('user');
-    console.log("before parse");
     if(user){
       user = JSON.parse(user);
     }
-    console.log("after parse");
-    console.log(user);
-    let newReview : Review = new Review(user, this.movie, this.rating, this.content);
+    let newReview : Review = new Review(Object(user).username, this.movie, this.rating, this.content);
     console.log("review:");
     console.log(newReview);
     this.reviewService.addReview(newReview).subscribe(reviewList =>{
@@ -68,7 +65,7 @@ export class ReviewsComponent implements OnInit {
     let hasReview : boolean = false;
     this.reviews.forEach(review => {
 
-      if(user.username === review.user?.username){
+      if(user.username === review.username){
         hasReview = true;
       }
 

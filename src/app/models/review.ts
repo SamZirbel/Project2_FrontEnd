@@ -3,14 +3,15 @@ import { Movie } from "./movie";
 
 export class Review {
 
-    public user : any | null;
+    public username : string;
     public movie : Movie;
     public starRating : number;
     public reviewContent : string;
 
     constructor(//user: {id: number, username: string, p: string, e: string, ph: string, sq: string} | null,
-                user: any | null, movie: Movie, starRating: number, reviewContent: string){
-        this.user = user;
+                user: string,
+                movie: Movie, starRating: number, reviewContent: string){
+        this.username = user;
         this.movie = movie;
         this.starRating = starRating;
         this.reviewContent = reviewContent;
