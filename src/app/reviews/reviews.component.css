@@ -18,3 +18,16 @@
   color: rgb(200, 170, 100);
 
 }
+
+#review-content {
+
+  margin-right : 2%;
+
+}
+
+#ReviewsEntryField {
+
+  align-items : center;
+  justify-content : center;
+
+}
