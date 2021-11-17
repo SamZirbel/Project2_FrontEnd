@@ -20,8 +20,8 @@ export class FavoriteService {
 
 
   overrideNull(): string {
-    if (sessionStorage.getItem('token') === null) return '';
-    return sessionStorage.getItem('token') as any;
+    if (localStorage.getItem('token') === null) return '';
+    return localStorage.getItem('token') as any;
   }
 
 httpOptions = {
