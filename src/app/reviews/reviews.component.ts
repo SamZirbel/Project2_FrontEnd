@@ -59,7 +59,7 @@ export class ReviewsComponent implements OnInit {
 
    }
 
-  ngOnChanges(): void {
+  ngOnChanges(): void {  
 
     this.reviews = [];
 
@@ -83,12 +83,19 @@ export class ReviewsComponent implements OnInit {
     let newReview : Review = new Review(Object(user).username, this.movie, this.currentStars, this.content);
     console.log("review:");
     console.log(newReview);
+
     this.reviewService.addReview(newReview).subscribe(reviewList =>{
       this.reviewAdd = reviewList;
+      this.ngOnChanges();
+
+
     });
 
     
-    this.ngOnChanges();
+    // this.ngOnChanges();
+    //this.ngOnChanges();
+
+    //this.ngAfterCOntentChecked();
 
   }
 
