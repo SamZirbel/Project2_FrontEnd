@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Movie } from '../models/movie'
 import { Review } from '../models/review'
 import { DateFormaterService } from './date-formater.service';
+import { ReviewBack } from '../models/review-back';
 //import { ifError } from 'assert';
 
 
@@ -15,12 +16,12 @@ export class ReviewToBackendService {
 
   constructor(private http : HttpClient, private dateFormater: DateFormaterService) { }
 
-  overrideNull(): string {
+   overrideNull(): string {
     if (sessionStorage.getItem('token') === null) return '';
     return sessionStorage.getItem('token') as any;
   }
 
-  httpOptions = {
+httpOptions = {
     headers: new HttpHeaders({
       Authorization: this.overrideNull(),
      
@@ -32,13 +33,28 @@ export class ReviewToBackendService {
     }),
   };
 
-  public getReviews(movieId:string):Observable<Review[]> {
-    return this.http.get<Review[]>("http://localhost:8085/review/reviewsByMovie/" + movieId, {responseType:'text' as 'json'});
+  public getReviews(movieId:string):Observable<ReviewBack[]> {
+    return this.http.get<ReviewBack[]>("http://localhost:8085/review/reviewsByMovie/" + movieId, this.httpOptions);
   }
 
   public addReview(review:Review): Observable<Review[]> {
     review.movie.release = this.dateFormater.formatDate(review.movie.release.toString());
-    return this.http.post<Review[]>("http://localhost:8085/review/addReview", JSON.stringify(review), this.httpOptions);
+    console.log(this.overrideNull());
+    
+    const headers = new HttpHeaders({
+      Authorization: this.overrideNull(),
+      "Content-Type": "application/json",
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': '*',
+      'Accept' : "*/*"
+    });
+    /*let releaseDate : String = review.movie.release;
+    console.log("Release date pre-formatting:");
+    console.log(releaseDate);
+    review.movie.release = this.dateFormater.formatDate(releaseDate.toString());*/
+    console.log("final review object:");
+    console.log(review);
+    return this.http.post<Review[]>("http://localhost:8085/review/addReview",JSON.stringify(review), this.httpOptions);
   }
 
 }

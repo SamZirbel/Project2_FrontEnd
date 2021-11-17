@@ -1,5 +1,47 @@
 
 <h1> Reviews</h1>
+
+<h2> Average Moviebook Review {{average }} </h2>
+
+<ng-template #t let-fill="fill">
+  <span class="star" [class.full]="fill === 100">
+    <span class="half" [style.width.%]="fill">&hearts;</span>&hearts;
+  </span>
+</ng-template>
+
+<ngb-rating [(rate)]="average" [starTemplate]="t" [readonly]="true" [max]="10"></ngb-rating>
+
+<table>
+    <thead>
+        <tr>
+            <!-- <th> Review ID </th>
+            <th> Star Rating </th> -->
+            <th> Review </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let r of reviews">
+
+<!-- 
+    public username : string;
+    public movie : Movie;
+    public starRating : number;
+    public reviewContent : string; -->
+
+            <!-- <td>
+                {{r.rid}}
+            </td>
+            <td>
+                {{r.starRating}}
+            </td> -->
+            <td>
+                {{r.review}}
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
 <p>Add your own review:</p>
 <form class="review-form" #form='ngForm' novalidate (ngSubmit)="submitReview()">
     <label for="rating-input">Rating:</label>
@@ -9,9 +51,5 @@
     <button type="submit">Post review</button>
 </form>
 
-<div class="review-list" *ngFor="let r of reviews">
-    <br>
-    <p>Reviewer: {{r.username}}</p>
-    <p>{{r.reviewContent}}</p>
-    <p>Rating: {{r.starRating}} stars</p>
-</div>
+
+

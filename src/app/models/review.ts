@@ -9,9 +9,9 @@ export class Review {
     public reviewContent : string;
 
     constructor(//user: {id: number, username: string, p: string, e: string, ph: string, sq: string} | null,
-                user: string,
+                username: string,
                 movie: Movie, starRating: number, reviewContent: string){
-        this.username = user;
+        this.username = username;
         this.movie = movie;
         this.starRating = starRating;
         this.reviewContent = reviewContent;

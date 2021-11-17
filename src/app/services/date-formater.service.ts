@@ -11,6 +11,8 @@ export class DateFormaterService {
 
     console.log("Formatting Date : " + date);
 
+    if (date[4] == '-') { return date; }
+
     let MM : string = "";
     let DD : string = "";
     let YYYY : string = "";
