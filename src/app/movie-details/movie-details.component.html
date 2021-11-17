@@ -27,24 +27,26 @@
             <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
               <ngb-panel>
                 <ng-template ngbPanelHeader let-opened="opened">
-                  <div class="d-flex justify-content-start">
+                  <div class="d-flex justify-content-start"
+                    style="padding-left : 30px;">
                   
                   <button mat-fab color="warn" aria-label="favorite icon" (click)="onFav()"
                     class="" id="DetailsFavoriteButton">
                             <mat-icon>favorite</mat-icon>
                   </button>
 
-                    <div class="col-sm-10">
+                    <div class="d-flex justify-content-center col-sm-10"
+                      style="margin-left : -20px">
                     <button id = "DetailsAccordian1Title"
                       ngbPanelToggle class="btn"> {{movieData?.Title}} </button>
                     
-                      <br>
+                      <!-- <br>
                       <div class = "d-flex justify-content-start">
                         <ngb-rating [(rate)]="currentRate"
                           id = "DetailsStars"></ngb-rating>
                         <p> &nbsp; : </p>
                         <p id="DetailsStarCount">&nbsp;   {{currentRate}} Stars!! </p>
-                      </div>
+                      </div> -->
                     </div>
                   </div>
                   
@@ -128,10 +130,10 @@
 </div>
 -->
 
-
+<!-- 
 <ngb-rating [(rate)]="averageRate" ></ngb-rating>
 <hr>
-<pre>Average Rating: <b>{{averageRate}}</b></pre>
+<pre>Average Rating: <b>{{averageRate}}</b></pre> -->
 
 
 <app-reviews></app-reviews>

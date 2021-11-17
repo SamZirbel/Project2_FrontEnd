@@ -1,28 +1,65 @@
 
 <div id = "ReviewsDiv">
 
-<h1> Reviews</h1>
+<p id="ReviewsBarrierLine"></p>
 
-<h2> Average Moviebook Review {{average }} </h2>
+
+<div id="ReviewsTitleDiv" class="d-flex">
+
+    <h1 id ="ReviewsTitle"> R E V I E W S</h1>
+
+
+</div>
+
+<p id="ReviewsBarrierLine"></p>
+
+
+<div id="ReviewsAverageRatingTextContainer" class = "d-flex flex-column">
+
+<h2 id="ReviewsAverageRatingText"> Average Moviebook Review </h2>
+
+
+<div class = "d-flex"  id="ReviewsAverageRating">
+
+<p class="col-sm-1"></p>
+
 
 <ng-template #t let-fill="fill">
   <span class="star" [class.full]="fill === 100">
     <span class="half" [style.width.%]="fill">&hearts;</span>&hearts;
   </span>
 </ng-template>
-
 <ngb-rating [(rate)]="average" [starTemplate]="t" [readonly]="true" [max]="10"></ngb-rating>
 
-<table>
-    <thead>
-        <tr>
+<p class="col-sm-1"></p>
+
+
+</div>
+
+
+
+<h2 id="ReviewsAverageRatingText"> {{average }} </h2>
+
+
+</div>
+
+<p id="ReviewsBarrierLine"></p>
+
+<div id = "ReviewsDisplayList">
+
+<table class="table table-striped table-light table-hover
+          table-sm">
+    <thead class="thead-light" style = "height : 50px">
+        <tr style = "padding: 20px;">
             <!-- <th> Review ID </th>
             <th> Star Rating </th> -->
-            <th> Review </th>
+            <th  class = "text-center" id="ReviewsTableTitle"> 
+                Previous Reviews
+            </th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let r of reviews">
+        <tr *ngFor="let r of reviews" >
 
 <!-- 
     public username : string;
@@ -36,18 +73,27 @@
             <td>
                 {{r.starRating}}
             </td> -->
-            <td>
+            <td scope="row" class = "text-center">
                 {{r.review}}
             </td>
         </tr>
     </tbody>
 </table>
 
+</div>
 
-<p>Add your own review:</p>
+
+<p id="ReviewsBarrierLine"></p>
+
+
 <form class="review-form" #form='ngForm' novalidate (ngSubmit)="submitReview()">
     
-    <div class = "d-flex justify-content-start">
+    <div class = "d-flex" id="ReviewsStarEntry">
+
+        <h3 id="ReviewsAddText">Add your own review:</h3>
+
+        <p class = "col-sm-2">&nbsp;                    &nbsp;</p>
+
         <ngb-rating [(rate)]="currentStars"
             id = "ReviewsStars"></ngb-rating>
         <p> &nbsp; : </p>
@@ -65,6 +111,8 @@
 
     </div>
 </form>
+
+<p id="ReviewsBarrierLine"></p>
 
 
 </div>
