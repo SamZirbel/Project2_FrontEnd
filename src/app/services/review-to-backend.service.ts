@@ -15,12 +15,12 @@ export class ReviewToBackendService {
 
   constructor(private http : HttpClient, private dateFormater: DateFormaterService) { }
 
-  overrideNull(): string {
-    if (localStorage.getItem('token') === null) return '';
-    return localStorage.getItem('token') as any;
+   overrideNull(): string {
+    if (sessionStorage.getItem('token') === null) return '';
+    return sessionStorage.getItem('token') as any;
   }
 
-  httpOptions = {
+httpOptions = {
     headers: new HttpHeaders({
       Authorization: this.overrideNull(),
      
@@ -53,7 +53,7 @@ export class ReviewToBackendService {
     review.movie.release = this.dateFormater.formatDate(releaseDate.toString());*/
     console.log("final review object:");
     console.log(review);
-    return this.http.post<Review[]>("http://localhost:8085/review/addReview", JSON.stringify(review), {headers: headers, responseType:'text' as 'json'});
+    return this.http.post<Review[]>("http://localhost:8085/review/addReview",JSON.stringify(review), this.httpOptions);
   }
 
 }
