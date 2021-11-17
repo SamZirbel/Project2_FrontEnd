@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Movie } from '../models/movie'
 import { Review } from '../models/review'
 import { DateFormaterService } from './date-formater.service';
+import { ReviewBack } from '../models/review-back';
 //import { ifError } from 'assert';
 
 
@@ -32,8 +33,8 @@ httpOptions = {
     }),
   };
 
-  public getReviews(movieId:string):Observable<Review[]> {
-    return this.http.get<Review[]>("http://localhost:8085/review/reviewsByMovie/" + movieId, {responseType:'text' as 'json'});
+  public getReviews(movieId:string):Observable<ReviewBack[]> {
+    return this.http.get<ReviewBack[]>("http://localhost:8085/review/reviewsByMovie/" + movieId, this.httpOptions);
   }
 
   public addReview(review:Review): Observable<Review[]> {
