@@ -1,4 +1,6 @@
 
+<div id = "ReviewsDiv">
+
 <h1> Reviews</h1>
 
 <h2> Average Moviebook Review {{average }} </h2>
@@ -44,11 +46,24 @@
 
 <p>Add your own review:</p>
 <form class="review-form" #form='ngForm' novalidate (ngSubmit)="submitReview()">
-    <label for="rating-input">Rating:</label>
-    <input type="number" id="rating-input" name="rating" min=1 max=10 [(ngModel)]="rating">
+    
+    <div class = "d-flex justify-content-start">
+        <ngb-rating [(rate)]="currentStars"
+            id = "ReviewsStars"></ngb-rating>
+        <p> &nbsp; : </p>
+        <p id="ReviewsStarCount">&nbsp;   {{currentStars}} Stars!! </p>
+    </div>
+
+        <!-- <label for="rating-input">Rating:</label>
+    <input type="number" id="rating-input" name="rating" min=1 max=10 [(ngModel)]="rating"> -->
     <br>
-    <textarea id="review-content" name="content" rows="5" cols="50" [(ngModel)]="content"></textarea>
+    <textarea id="review-content" name="content" 
+        rows="5" cols="50" [(ngModel)]="content"
+        class="col-sm-9"></textarea>
     <button type="submit">Post review</button>
 </form>
 
 
+</div>
+
+<p>&nbsp;</p>

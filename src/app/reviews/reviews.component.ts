@@ -39,6 +39,8 @@ export class ReviewsComponent implements OnInit {
   rating : number = 1;
   content : string = '';
 
+  public currentStars : number = 0;
+
     public a = 0.9;
 
     public sum = 0;
@@ -78,7 +80,7 @@ export class ReviewsComponent implements OnInit {
     if(user){
       user = JSON.parse(user);
     }
-    let newReview : Review = new Review(Object(user).username, this.movie, this.rating, this.content);
+    let newReview : Review = new Review(Object(user).username, this.movie, this.currentStars, this.content);
     console.log("review:");
     console.log(newReview);
     this.reviewService.addReview(newReview).subscribe(reviewList =>{
