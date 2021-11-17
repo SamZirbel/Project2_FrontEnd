@@ -1,6 +1,6 @@
 <mat-toolbar color="primary" class="app-header">
   <div>
-    <a routerLink="/home" routerLinkActive="active" class="home inline"><H1>MovieBook</H1></a>
+    <a routerLink="{{route}}" routerLinkActive="active" class="home inline"><H1>MovieBook</H1></a>
   </div>
   <span class="nav-tool-items2">
     <h2 *ngIf="show == 0; then ifblock; else elseBlock"></h2>
