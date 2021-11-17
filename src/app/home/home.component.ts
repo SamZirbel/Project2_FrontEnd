@@ -3,6 +3,7 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 import { SearchbarComponent } from '../searchbar/searchbar.component';
 
 import { Movie } from '../models/movie';
+import {Router} from '@angular/router'
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,8 @@ import { Movie } from '../models/movie';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(    
+  constructor(   
+    private router:Router, 
     private renderer : Renderer2,
     //private searchbar : SearchbarComponent
   ) { }
@@ -29,7 +31,9 @@ export class HomeComponent implements OnInit {
   public activeMovie : Movie = new Movie("","This Is A Title Change", "", "", "", "");
 
   ngOnInit(): void {
-
+    if (localStorage.getItem('token') == null) {
+      this.router.navigateByUrl('login');
+    }
     //this.renderer.appendChild(document.querySelector('app-home'), document.querySelector('app-searchbar'));
 
     

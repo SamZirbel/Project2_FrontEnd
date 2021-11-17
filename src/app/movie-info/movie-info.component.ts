@@ -7,6 +7,7 @@ import { MovieInfoHolderService } from '../services/movie-info-holder.service';
 import { Movie } from '../models/movie';
 import { Observable } from 'rxjs';
 import { Title } from '@angular/platform-browser';
+import {Router} from '@angular/router'
 
 
 
@@ -29,6 +30,7 @@ export class MovieInfoComponent implements OnInit {
   public movies : Array<Movie> = [];
 
   constructor(
+    public router: Router,
     movieHolder : MovieInfoHolderService,
     //searchbar : SearchbarComponent,
     renderer : Renderer2,
@@ -37,6 +39,9 @@ export class MovieInfoComponent implements OnInit {
     fds:any;
     
   ngOnInit(): void {
+    if (localStorage.getItem('token') == null) {
+      this.router.navigateByUrl('login');
+    }
    }
 
   ngAfterViewChecked() {

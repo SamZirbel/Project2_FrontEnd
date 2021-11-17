@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Favorite } from '../models/favorite';
 import { Movie } from '../models/movie';
 import { FavoriteService } from '../services/favorite.service';
+import {Router} from '@angular/router'
 
 @Component({
   selector: 'app-fav-list',
@@ -27,13 +28,16 @@ import { FavoriteService } from '../services/favorite.service';
 })
 export class FavListComponent implements OnInit {
 
-  constructor(public favoriteService : FavoriteService) { }
+  constructor(public favoriteService : FavoriteService, private router: Router) { }
 
   public HeartCount = 1;
 
   public favorites : Array<Favorite> = [];
 
   ngOnInit(): void {
+    if (localStorage.getItem('token') == null) {
+      this.router.navigateByUrl('login');
+    }
     let user = sessionStorage.getItem('user');
     if (user) {
       user = JSON.parse(user);

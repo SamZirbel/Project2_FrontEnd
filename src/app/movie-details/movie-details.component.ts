@@ -1,5 +1,5 @@
 import { Component, OnInit, SimpleChange } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ImdbMultiData } from '../models/imdb-multi-data';
 import { AllMovieData } from '../models/all-movie-data';
@@ -22,6 +22,7 @@ export class MovieDetailsComponent implements OnInit {
 
   constructor(
     public router : ActivatedRoute,
+    public route: Router,
     public apiServicer : ApiService,
     public favoriteService : FavoriteService,
     //public movietoBackend : MovieToBackendService,
@@ -35,6 +36,9 @@ export class MovieDetailsComponent implements OnInit {
 
   ngOnInit(): void {
 
+    if (localStorage.getItem('token') == null) {
+      this.route.navigateByUrl('login');
+    }
     console.log(this.router.snapshot.paramMap.get("id"));
     this.apiServicer.getSeriesMovieData(this.router.snapshot.paramMap.get("id")).subscribe(
     res2 => {

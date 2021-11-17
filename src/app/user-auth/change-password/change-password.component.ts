@@ -85,5 +85,10 @@ export class ChangePasswordComponent implements OnInit {
       }
     );
   }
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+
+    if (localStorage.getItem('token') == null) {
+      this.router.navigateByUrl('login');
+    }
+  }
 }

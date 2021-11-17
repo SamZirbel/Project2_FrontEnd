@@ -69,7 +69,10 @@ export class ResetPassComponent implements OnInit {
           );
           //we are subscribing on the [mat-dialog-close] attribute as soon as we click on the dialog button
           dialogRef.afterClosed().subscribe((result) => {
+            
             this.location.back();
+            this.router.navigateByUrl('login');
+            
           });
         }
        
