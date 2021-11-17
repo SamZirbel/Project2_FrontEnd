@@ -1,7 +1,7 @@
 #SearchMovieForm {
 
   margin-top : 50px;
-  margin-left : 3%;
+  margin-left : 9%;
   margin-right : 3%;
 
 }
@@ -38,5 +38,17 @@
   padding-bottom : 18px;
   border-bottom : double;
   border-width : 5px;
+
+}
+
+#SearchBorderParagraph {
+
+  margin-top : 50px;
+  margin-left : 3%;
+  margin-right : 3%;
+
+  border-bottom : solid;
+
+  border-width : 3px;
 
 }
