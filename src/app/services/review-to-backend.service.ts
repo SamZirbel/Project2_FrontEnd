@@ -47,7 +47,10 @@ export class ReviewToBackendService {
       'Access-Control-Allow-Methods': '*',
       'Accept' : "*/*"
     });
-    review.movie.release = this.dateFormater.formatDate(review.movie.release.toString());
+    /*let releaseDate : String = review.movie.release;
+    console.log("Release date pre-formatting:");
+    console.log(releaseDate);
+    review.movie.release = this.dateFormater.formatDate(releaseDate.toString());*/
     console.log("final review object:");
     console.log(review);
     return this.http.post<Review[]>("http://localhost:8085/review/addReview", JSON.stringify(review), {headers: headers, responseType:'text' as 'json'});
